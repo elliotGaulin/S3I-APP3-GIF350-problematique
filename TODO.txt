@@ -1,0 +1,11 @@
+Design pattern à implémenter obligatoirement :
+  - Singleton : Classe menu
+  - Factory : ??
+  - Observer : ??
+  - State : Facture et FactureEtat
+	Ajuster les méthodes payer(), fermer(), ouvrir() et ajoutePlat() pour utiliser les nouveaux states
+  - MVC : Facture::genererFacture() devrait utiliser une vue/controlleur
+
+Possibles designs optionnels (choisir 2) :
+  - Iterator (positions dans le menu)
+
