@@ -1,28 +1,34 @@
 package menufact;
 
+import ingredients.Ingredient;
+import ingredients.IngredientInventaire;
 import menufact.facture.Facture;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 
+import java.util.ArrayList;
+
 public class TestMenuFact01 {
     public static void main(String[] args) {
 
+        ArrayList<IngredientInventaire> ingredients = new ArrayList<IngredientInventaire>();
+
         try {
             System.out.println("===menufact.plats.PlatAuMenu Constructeur 3 arguments");
-            PlatAuMenu p1 = new PlatAuMenu(0, "Frites sauce", 11.50);
+            PlatAuMenu p1 = new PlatAuMenu(0, "Frites sauce", 11.50, ingredients);
             System.out.println(p1);
 
             System.out.println("===menufact.plats.PlatAuMenu Constructeur 3 arguments");
-            PlatAuMenu p2 = new PlatAuMenu(1, "Frites", 10.25);
+            PlatAuMenu p2 = new PlatAuMenu(1, "Frites", 10.25, ingredients);
             System.out.println(p2);
 
             System.out.println("===menufact.plats.PlatSante Constructeur 5 arguments");
-            PlatSante ps1 = new PlatSante(2, "Salade", 5.25, 100, 10, 1);
+            PlatSante ps1 = new PlatSante(2, "Salade", 5.25, ingredients, 100, 10, 1);
             System.out.println(ps1);
 
             System.out.println("===menufact.plats.PlatSante Constructeur 5 arguments");
-            PlatSante ps2 = new PlatSante(3, "Salade Cesar", 8.25, 100, 10, 1);
+            PlatSante ps2 = new PlatSante(3, "Salade Cesar", 8.25, ingredients, 100, 10, 1);
             System.out.println(ps2);
 
             System.out.println("===menufact.Menu ajout avec 4 plats");

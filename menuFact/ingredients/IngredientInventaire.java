@@ -20,16 +20,11 @@ public class IngredientInventaire {
         return quantite;
     }
 
-    private void setQuantite(int quantite) throws IngredientException{
+    public void setQuantite(int quantite) throws IngredientException{
 
         if (quantite < 0)
             throw new IngredientException("Il n'est pas possible d'avoir une quantité negative");
         else
             this.quantite = quantite;
-    }
-
-    public void mettreAJourQuantite(int quantite) throws IngredientException{
-        int nouvelle_quantite = this.quantite - quantite;
-        setQuantite(quantite);
     }
 }

@@ -20,7 +20,7 @@ public class Inventaire {
     public void modifierInventaireIngredient(Ingredient ingredient, int quantite) throws IngredientException {
         Optional<IngredientInventaire> ing = getIngredientInventaire(ingredient);
         if (ing.isPresent()) {
-            ing.get().mettreAJourQuantite(quantite);
+            ing.get().setQuantite(quantite);
             return;
         }
         ingredientInventaires.add(new IngredientInventaire(ingredient, quantite));
