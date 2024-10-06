@@ -4,6 +4,7 @@ public class Ingredient {
     private String nom;
     private String description;
     private TypeIngredient typeIngredient;
+    private String uniteDeMesure;
 
     public String getNom() {
         return nom;
@@ -20,6 +21,10 @@ public class Ingredient {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getUniteDeMesure() { return uniteDeMesure; }
+
+    public void setUniteDeMesure(String uniteDeMesure) { this.uniteDeMesure = uniteDeMesure; }
 
     public TypeIngredient getTypeIngredient() {
         return typeIngredient;
