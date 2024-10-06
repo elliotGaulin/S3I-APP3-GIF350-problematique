@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1152</x>
+      <y>752</y>
+      <w>216</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>Menu
+--
+-description:String
+-courant:ing
+-plat:ArrayList&lt;PlatAuMenu&gt;
+--
++Menu(String)
++ajoute(PlatAuMenu):void
++position(int):void
++platCourant():PlatAuMenu
++positionSuivante():void
++positionPrecedente():void
++toString(String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1088</x>
+      <y>344</y>
+      <w>200</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Facture
+--
+-date:Date
+-description:String
+-etat:FactureEtat
+-platchosi:ArrayList&lt;PlatChoisi&gt;
+-courant:int
+-client:Client
+--
++Facture(String)
++associerClient(Client):void
++sousTotal():double
++total():double
++payer():void
+-tps():double
+-tvq():double
++fermer():void
++ouvrir():void
++getEtat:FactureEtat
++ajoutePlat(PlatChoisi):void
++toString():String
++genererFacture():String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>224</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;FactureEtat
+--
+OUVERTE
+FERMEE
+PAYEE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1216</x>
+      <y>672</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>FactureException
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1432</x>
+      <y>600</y>
+      <w>120</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>java.lang.Exception
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1272</x>
+      <y>624</y>
+      <w>240</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>280.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1216</x>
+      <y>616</y>
+      <w>88</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;throws&gt;&gt;
+lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>384</y>
+      <w>288</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>PlatAuMenu
+--
+-code:int
+-description:String
+-prix:double
+-ingredients:ArrayList&lt;IngredientInventaire&gt;
+--
++PlatAuMenu()
++PlatAuMenu(int,String,double)
++getCode():int
++setCode(int):void
++getDescription():String
++setDescription(String):void
++getPrix():double
++setPrix(double):void
++getIngredients():ArrayList&lt;IngredientInventaire&gt;
++setIngredients(ArrayList&lt;IngredientInventaire&gt;) : void
++toString():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1280</x>
+      <y>376</y>
+      <w>240</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1176</x>
+      <y>288</y>
+      <w>56</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1464</x>
+      <y>776</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuException
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1488</x>
+      <y>624</y>
+      <w>56</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1360</x>
+      <y>808</y>
+      <w>184</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;throws&gt;&gt;
+lt=&lt;.</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1176</x>
+      <y>616</y>
+      <w>32</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>20.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1392</x>
+      <y>208</y>
+      <w>216</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>Client
+--
+-idClient:int
+-nom:String
+-numeroCarteCredit:String 
+--
++Client(int, String, String)
++getIdClient():int
++setIdClient(int):void
++getNom():String
++setNom(String):void
++getNumeroCarteCredit():String
++setNumeroCarteCredit(String):void
++toString():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>824</x>
+      <y>656</y>
+      <w>216</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>PlatSante
+--
+-kcal:double
+-chol:double
+-gras:double
+--
++PlatSante()
++PlatSante(int,String,double,double,double,double)
++getKcal():double
++setKcal(double):void
++getChol():double
++setChol(double):void
++getGras():double
++setGras(double):void
++toString():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>600</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>736</x>
+      <y>232</y>
+      <w>216</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PlatChoisi
+--
+-plat:PlatAuMenu
+-quantite:int
+--
++PlatChoisi(PlatAuMenu,int)
++getQuantite():int
++setQuantite(int):void
++getPlat():PlatAuMenu
++toString():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>344</y>
+      <w>40</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>944</x>
+      <y>312</y>
+      <w>160</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1432</x>
+      <y>432</y>
+      <w>216</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>tests
+--
+
+--
+-methodesTests</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1280</x>
+      <y>464</y>
+      <w>168</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;100.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>944</x>
+      <y>504</y>
+      <w>224</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;260.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>576</x>
+      <y>176</y>
+      <w>472</w>
+      <h>680</h>
+    </coordinates>
+    <panel_attributes>Plats</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1072</x>
+      <y>192</y>
+      <w>264</w>
+      <h>512</h>
+    </coordinates>
+    <panel_attributes>facture</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1144</x>
+      <y>720</y>
+      <w>472</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>menuFact</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>592</x>
+      <y>656</y>
+      <w>216</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>PlatEnfant
+--
+-proportion:double
+--
++PlatEnfant()
++PlatEnfant(int,String,double,double)
++getProportion():double
++toString():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>704</x>
+      <y>600</y>
+      <w>128</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>64</x>
+      <y>160</y>
+      <w>456</w>
+      <h>680</h>
+    </coordinates>
+    <panel_attributes>ingredients</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>320</y>
+      <w>216</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>Ingredient
+--
+- nom: String
+- description: String
+- typeIngredient: TypeIngredient
+- uniteDeMesure: String
+--
++ getNom(): String
++ setNom(String): void
++ getDescription(): String
++ setDescription(String): void
++ getTypeIngredient(): TypeIngredient
++ setTypeIngredient(TypeIngredient): void
++ getUniteDeMesure(): String
++ setUniteDeMesure(String): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>200</y>
+      <w>120</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;TypeIngredient
+--
+EPICE
+VIANDE
+LEGUME
+LAITIER
+FRUIT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>184</x>
+      <y>280</y>
+      <w>160</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>296</x>
+      <y>528</y>
+      <w>216</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>IngredientInventaire
+--
+- ingredient:Ingredient
+- quanite:int
+--
++IngredientInventaire(Ingredient, int)
++getIngredient():Ingredient
++getQuantite():int
++setQuantite(int):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>296</x>
+      <y>416</y>
+      <w>136</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;140.0</additional_attributes>
+  </element>
+</diagram>
