@@ -4,27 +4,73 @@ import ingredients.Ingredient;
 import ingredients.IngredientInventaire;
 import ingredients.exceptions.IngredientException;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
+/**
+ * L'inventaire des ingrédients du système MenuFact
+ *
+ * @author Vincent Bélisle
+ */
 public class Inventaire {
-    private ArrayList<IngredientInventaire> ingredientInventaires = new ArrayList<IngredientInventaire>();
+    private final Map<Ingredient, Integer> ingredientInventaires = new HashMap<>();
+    private static Inventaire instance;
 
-    private Optional<IngredientInventaire> getIngredientInventaire(Ingredient ingredient) {
-        return ingredientInventaires.stream()
-                .filter(ing -> ing.getIngredient().equals(ingredient))
-                .findFirst();
+    private Inventaire(Optional<Map<Ingredient, Integer>> ingredientInventaires) {
     }
 
-
-    public void modifierInventaireIngredient(Ingredient ingredient, int quantite) throws IngredientException {
-        Optional<IngredientInventaire> ing = getIngredientInventaire(ingredient);
-        if (ing.isPresent()) {
-            ing.get().setQuantite(quantite);
-            return;
+    public static Inventaire getInstance(Optional<Map<Ingredient, Integer>> ingredientInventaires) {
+        if (instance == null) {
+            instance = new Inventaire(ingredientInventaires);
         }
-        ingredientInventaires.add(new IngredientInventaire(ingredient, quantite));
+        return instance;
+    }
 
+    /**
+     * Modifier l'inventaire d'un ingredient
+     *
+     * @param ingredient
+     * @param quantite
+     * @throws IngredientException
+     */
+    public void modifierInventaireIngredient(Ingredient ingredient, int quantite) throws IngredientException {
+        ingredientInventaires.put(ingredient, quantite);
+    }
+
+    /**
+     * Verifier si tous les ingrédients nécessaires sont disponibles
+     *
+     * @param ingredients
+     * @return
+     * @throws IngredientException
+     */
+    public boolean verifierEtMettreAJourInventaireIngredient(ArrayList<IngredientInventaire> ingredients) throws IngredientException {
+        if (ingredients.isEmpty()) {
+            return true;
+        }
+
+        Map<Ingredient, Integer> misesAJour = new HashMap<>();
+
+        for (IngredientInventaire ingredientInventaire : ingredients) {
+            int quantite = ingredientInventaire.getQuantite();
+
+            if (quantite == 0) {
+                continue;
+            }
+
+            Integer quantiteDisponible = ingredientInventaires.get(ingredientInventaire.getIngredient());
+
+            if (quantiteDisponible == null || quantiteDisponible < quantite) {
+                throw new IngredientException("Il manque des ingrédients");
+            }
+
+            misesAJour.put(ingredientInventaire.getIngredient(), quantiteDisponible - quantite);
+        }
+
+        // Pour chaque entrée dans la Map de mises à jour, mettre à jour dans l'inventaire
+        ingredientInventaires.putAll(misesAJour);
+
+        return true;
     }
 
 }

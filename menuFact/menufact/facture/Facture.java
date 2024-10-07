@@ -1,5 +1,6 @@
 package menufact.facture;
 
+import inventaire.Inventaire;
 import menufact.Chef;
 import menufact.Client;
 import menufact.GestionnaireEvenement;
@@ -8,6 +9,7 @@ import menufact.plats.PlatChoisi;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 /**
  * Une facture du systeme Menufact
@@ -22,6 +24,8 @@ public class Facture {
     private int courant;
     private Client client;
 
+
+    private Inventaire inventaire;
     private GestionnaireEvenement gestionnaireEvenement;
 
 
@@ -116,6 +120,7 @@ public class Facture {
         courant = -1;
         this.description = description;
         this.gestionnaireEvenement = new GestionnaireEvenement(evenementAjoutPlatChoisi);
+        this.inventaire = Inventaire.getInstance(Optional.empty());
     }
 
     /**
