@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class FabriqueIngredient {
 
-    private final HashMap ingredientsEnregistrees = new HashMap<>();
+    private final HashMap<TypeIngredient,Ingredient> ingredientsEnregistrees = new HashMap<>();
 
     private static FabriqueIngredient instance;
 

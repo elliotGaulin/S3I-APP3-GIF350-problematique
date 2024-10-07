@@ -5,7 +5,6 @@ import ingredients.IngredientInventaire;
 import ingredients.exceptions.IngredientException;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * L'inventaire des ingrédients du système MenuFact
