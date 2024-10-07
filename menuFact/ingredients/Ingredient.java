@@ -1,10 +1,12 @@
 package ingredients;
 
-public class Ingredient {
+public abstract class Ingredient {
     private String nom;
     private String description;
     private TypeIngredient typeIngredient;
     private String uniteDeMesure;
+
+    public abstract Ingredient creerIngredient(String nom, String description, String uniteDeMesure);
 
     public String getNom() {
         return nom;
@@ -22,9 +24,13 @@ public class Ingredient {
         this.description = description;
     }
 
-    public String getUniteDeMesure() { return uniteDeMesure; }
+    public String getUniteDeMesure() {
+        return uniteDeMesure;
+    }
 
-    public void setUniteDeMesure(String uniteDeMesure) { this.uniteDeMesure = uniteDeMesure; }
+    public void setUniteDeMesure(String uniteDeMesure) {
+        this.uniteDeMesure = uniteDeMesure;
+    }
 
     public TypeIngredient getTypeIngredient() {
         return typeIngredient;
@@ -32,5 +38,12 @@ public class Ingredient {
 
     public void setTypeIngredient(TypeIngredient typeIngredient) {
         this.typeIngredient = typeIngredient;
+    }
+
+    @Override
+    public String toString() {
+        return "menuFact.Ingredient [nom=" + nom + ", description=" + description + ", typeIngredient=" +
+                typeIngredient + ", uniteDeMesure=" +
+                uniteDeMesure + "]";
     }
 }

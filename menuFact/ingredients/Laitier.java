@@ -1,14 +1,15 @@
 package ingredients;
 
 /**
- * Classe Fruit pour représenter
- * les fruits
+ * Classe Laitier représentant
+ * les produits laitier
  */
-public class Fruit extends Ingredient{
+public class Laitier extends Ingredient{
 
     static {
-        FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.FRUIT, new Fruit());
+        FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.LAITIER, new Laitier());
     }
+
     /**
      * Surcharge du constructeur de la Classe
      * Ingredient
@@ -18,10 +19,10 @@ public class Fruit extends Ingredient{
      * @return
      */
     @Override
-    public Fruit creerIngredient(String nom, String description, String uniteDeMesure) {
+    public Laitier creerIngredient(String nom, String description, String uniteDeMesure) {
         this.setNom(nom);
         this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.FRUIT);
+        this.setTypeIngredient(TypeIngredient.LAITIER);
         this.setUniteDeMesure(uniteDeMesure);
 
         return this;

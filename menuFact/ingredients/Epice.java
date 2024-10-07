@@ -1,13 +1,13 @@
 package ingredients;
 
 /**
- * Classe Fruit pour représenter
- * les fruits
+ * Classe Epice pour représenter
+ * les épices
  */
-public class Fruit extends Ingredient{
+public class Epice extends Ingredient{
 
     static {
-        FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.FRUIT, new Fruit());
+        FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.EPICE, new Epice());
     }
     /**
      * Surcharge du constructeur de la Classe
@@ -18,10 +18,10 @@ public class Fruit extends Ingredient{
      * @return
      */
     @Override
-    public Fruit creerIngredient(String nom, String description, String uniteDeMesure) {
+    public Epice creerIngredient(String nom, String description, String uniteDeMesure) {
         this.setNom(nom);
         this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.FRUIT);
+        this.setTypeIngredient(TypeIngredient.EPICE);
         this.setUniteDeMesure(uniteDeMesure);
 
         return this;
