@@ -28,7 +28,7 @@ public class Facture {
     /**********************Constantes ************/
     private final double TPS = 0.05;
     private final double TVQ = 0.095;
-    private String evenementAjoutPlatChoisi = "ajout-platChoisi";
+    private final String evenementAjoutPlatChoisi = "ajout-platChoisi";
 
     /**
      *
@@ -76,13 +76,13 @@ public class Facture {
     }
 
     /**
-     * Permet de chager l'état de la facture à PAYEE
+     * Permet de changer l'état de la facture à PAYEE
      */
     public void payer() throws FactureException {
        this.etat.payer();
     }
     /**
-     * Permet de chager l'état de la facture à FERMEE
+     * Permet de changer l'état de la facture à FERMEE
      */
     public void fermer() throws FactureException {
        this.etat.fermer();
@@ -130,7 +130,7 @@ public class Facture {
     public void ajoutePlatChoisi(PlatChoisi p)
     {
         this.platchoisi.add(p);
-        gestionnaireEvenement.notifier("ajout-platChoisi", "Veuillez procéder à la préparation du plat suivant : " + p.toString());
+        gestionnaireEvenement.notifier(evenementAjoutPlatChoisi, "Veuillez procéder à la préparation du plat suivant : " + p.toString());
     }
 
     /**

@@ -1,10 +1,9 @@
 package menufact.plats;
 
-import menufact.facture.Facture;
 import menufact.plats.exceptions.PlatException;
 
-public class PlatCommandee extends  PlatEtat{
-    public PlatCommandee(PlatChoisi platChoisi) {
+public class PlatServi extends  PlatEtat{
+    public PlatServi(PlatChoisi platChoisi) {
         super(platChoisi);
     }
 
@@ -16,7 +15,7 @@ public class PlatCommandee extends  PlatEtat{
 
     @Override
     public void preparee() throws PlatException {
-        getPlatChoisi().setEtat(new PlatEnPreparation(getPlatChoisi()));
+
     }
 
     @Override
