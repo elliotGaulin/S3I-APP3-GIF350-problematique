@@ -1,6 +1,6 @@
 Design pattern à implémenter obligatoirement :
   - Singleton : Classe menu
-  - Factory : Création de plats?
+  - Factory : Création de plats? -> santé ou régulier en fonction des paramêtres passés à la factory
   - Observer : Notifier au "Chef", "À chaque fois qu’un Plat choisi est ajouté à la Facture, il faut notifier au Chef qu’il faut
 procéder à la préparation du plat."
 
@@ -10,4 +10,13 @@ procéder à la préparation du plat."
 
 Possibles designs optionnels (choisir 2) :
   - Iterator (positions dans le menu)
+  - 
+
+
+  Nouvelles features:
+  - Plats enfants
+  - Ingrédients
+  - Chef
+  - États des plats à préparé
+  - Gestion des exceptions de manière appropriée 
 
