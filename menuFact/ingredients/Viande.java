@@ -1,7 +1,19 @@
 package ingredients;
 
-public class Viande extends Ingredient{
-    public Viande() {
-        setTypeIngredient(TypeIngredient.VIANDE);
+public class Fruit extends Ingredient{
+
+    static {
+        FabriqueIngredient.getInstance().enregistrerIngredient("Fruit", new Fruit());
+    }
+
+    @Override
+    public Fruit creerIngredient(String nom, String description, String uniteDeMesure) {
+        this.setNom(nom);
+        this.setDescription(description);
+        this.setTypeIngredient(TypeIngredient.FRUIT);
+        this.setUniteDeMesure(uniteDeMesure);
+
+        return this;
+
     }
 }
