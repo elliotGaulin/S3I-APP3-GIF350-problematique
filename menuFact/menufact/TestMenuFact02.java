@@ -40,6 +40,10 @@ public class TestMenuFact02 {
 
         Client c1 = new Client(1,"Mr Client","1234567890");
 
+        Chef chef = new Chef();
+
+        f1.gestionnaireEvenement.abonner("ajout-platChoisi", chef);
+
 
         t.test1_AffichePlatsAuMenu(trace, p1,p2,p3,p4,p5);
         t. test2_AffichePlatsSante(trace, ps1,ps2,ps3,ps4,ps5);

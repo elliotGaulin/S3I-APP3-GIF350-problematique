@@ -1,6 +1,7 @@
 package menufact.facture;
 
 import menufact.Client;
+import menufact.GestionnaireEvenement;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatChoisi;
 
@@ -19,6 +20,8 @@ public class Facture {
     private ArrayList<PlatChoisi> platchoisi = new ArrayList<PlatChoisi>();
     private int courant;
     private Client client;
+
+    public GestionnaireEvenement gestionnaireEvenement;
 
 
     /**********************Constantes ************/
@@ -110,6 +113,7 @@ public class Facture {
         etat = new FactureOuverte(this);
         courant = -1;
         this.description = description;
+        this.gestionnaireEvenement = new GestionnaireEvenement("ajout-platChoisi");
     }
 
     /**
@@ -124,6 +128,7 @@ public class Facture {
     public void ajoutePlatChoisi(PlatChoisi p)
     {
         this.platchoisi.add(p);
+        gestionnaireEvenement.notifier("ajout-platChoisi", "Ajout d'un plat choisi: " + p.toString());
     }
 
     /**
