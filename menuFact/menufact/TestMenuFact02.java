@@ -79,7 +79,11 @@ public class TestMenuFact02 {
             System.out.println(me);
         }
 
-        t.test9_PayerFacture(f1);
+        try {
+            t.test9_PayerFacture(f1);
+        } catch (FactureException fe) {
+            System.out.println(fe.getMessage());
+        }
 
         try {
             t.test8_AjouterPlatsFacture(f1, m1,1);
@@ -98,11 +102,6 @@ public class TestMenuFact02 {
         {
             System.out.println(fe.getMessage());
         }
-
-
-
-
-
 
         System.out.println("FIN DE TOUS LES TESTS...");
 
@@ -286,8 +285,7 @@ public class TestMenuFact02 {
         System.out.println(f1);
     }
 
-    private void test9_PayerFacture(Facture f1)
-    {
+    private void test9_PayerFacture(Facture f1) throws FactureException {
         System.out.println("===test9_PayerFacture");
 
         System.out.println("Avant payer la facture");
