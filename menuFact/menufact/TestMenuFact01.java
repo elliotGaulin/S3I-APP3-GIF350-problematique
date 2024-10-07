@@ -32,7 +32,7 @@ public class TestMenuFact01 {
             System.out.println(ps2);
 
             System.out.println("===menufact.Menu ajout avec 4 plats");
-            Menu menu = new Menu("Menu1");
+            Menu menu = Menu.getInstance("Menu1");
             menu.ajoute(p1);
             menu.ajoute(p2);
             menu.ajoute(ps1);

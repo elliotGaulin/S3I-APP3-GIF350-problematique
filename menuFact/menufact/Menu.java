@@ -6,11 +6,13 @@ import menufact.plats.PlatAuMenu;
 import java.util.ArrayList;
 
 public class Menu {
+    private static Menu instance;
+
     private String description;
     private int courant;
     private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
 
-    public Menu(String description) {
+    private Menu(String description) {
         this.description = description;
     }
 
@@ -37,12 +39,39 @@ public class Menu {
             courant++;
     }
 
-    public void positionPrecedente() throws MenuException
-    {
-        if (courant-1 < 0)
+    public void positionPrecedente() throws MenuException {
+        if (courant - 1 < 0)
             throw new MenuException("On depasse le nombre minimale de plats");
         else
             courant--;
+    }
+
+    /**
+     * Retourne ou créé et retourne l'instance du menu
+     * @param description La description du menu créé
+     * @return L'instance du menu
+     */
+    public static Menu getInstance(String description)
+    {
+        if (Menu.instance == null) {
+            Menu.instance = new Menu(description);
+        }
+
+        return Menu.instance;
+    }
+
+    /**
+     * Retourne ou créé et retourne l'instance du menu
+     * La description du menu créé sera vide
+     * @return L'instance du menu
+     */
+    public static Menu getInstance()
+    {
+        if (Menu.instance == null) {
+            Menu.instance = new Menu("");
+        }
+
+        return Menu.instance;
     }
 
 
