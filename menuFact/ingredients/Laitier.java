@@ -1,16 +1,16 @@
 package ingredients;
 
-public class Epice extends Ingredient{
+public class Laitier extends Ingredient{
 
     static {
-        FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.EPICE, new Epice());
+        FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.LAITIER, new Laitier());
     }
 
     @Override
-    public Epice creerIngredient(String nom, String description, String uniteDeMesure) {
+    public Laitier creerIngredient(String nom, String description, String uniteDeMesure) {
         this.setNom(nom);
         this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.EPICE);
+        this.setTypeIngredient(TypeIngredient.LAITIER);
         this.setUniteDeMesure(uniteDeMesure);
 
         return this;

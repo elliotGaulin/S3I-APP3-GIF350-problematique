@@ -1,16 +1,16 @@
 package ingredients;
 
-public class Fruit extends Ingredient{
+public class Legume extends Ingredient{
 
     static {
-        FabriqueIngredient.getInstance().enregistrerIngredient("Fruit", new Fruit());
+        FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.LEGUME, new Legume());
     }
 
     @Override
-    public Fruit creerIngredient(String nom, String description, String uniteDeMesure) {
+    public Legume creerIngredient(String nom, String description, String uniteDeMesure) {
         this.setNom(nom);
         this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.FRUIT);
+        this.setTypeIngredient(TypeIngredient.LEGUME);
         this.setUniteDeMesure(uniteDeMesure);
 
         return this;

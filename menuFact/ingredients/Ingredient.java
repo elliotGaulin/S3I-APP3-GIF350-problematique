@@ -1,10 +1,12 @@
 package ingredients;
 
-public class Ingredient {
+public abstract class Ingredient {
     private String nom;
     private String description;
     private TypeIngredient typeIngredient;
     private String uniteDeMesure;
+
+    public abstract Ingredient creerIngredient(String nom, String description, String uniteDeMesure);
 
     public String getNom() {
         return nom;
