@@ -40,10 +40,14 @@ public class TestMenuFact02 {
         FabriqueIngredient fabriqueIngredient = FabriqueIngredient.getInstance();
 
         Ingredient carotte = fabriqueIngredient.creerIngredient(TypeIngredient.LEGUME, "Carotte", "Légume orange", "g");
+        Ingredient boeuf = fabriqueIngredient.creerIngredient(TypeIngredient.VIANDE, "Boeuf", "", "g");
+        Ingredient poulet = fabriqueIngredient.creerIngredient(TypeIngredient.VIANDE, "Poulet", "", "g");
 
         ArrayList<IngredientInventaire> ingredients = new ArrayList<>();
 
         ingredients.add(new IngredientInventaire(carotte, 5));
+        ingredients.add(new IngredientInventaire(poulet, 10));
+        ingredients.add(new IngredientInventaire(boeuf, 15));
 
 
         TestMenuFact02 t = new TestMenuFact02();
