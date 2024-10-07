@@ -73,16 +73,14 @@ public class Facture {
     /**
      * Permet de chager l'état de la facture à PAYEE
      */
-    public void payer()
-    {
-       etat = FactureEtat.PAYEE;
+    public void payer() throws FactureException {
+       this.etat.payer();
     }
     /**
      * Permet de chager l'état de la facture à FERMEE
      */
-    public void fermer()
-    {
-       etat = FactureEtat.FERMEE;
+    public void fermer() throws FactureException {
+       this.etat.fermer();
     }
 
     /**
@@ -91,10 +89,7 @@ public class Facture {
      */
     public void ouvrir() throws FactureException
     {
-        if (etat == FactureEtat.PAYEE)
-            throw new FactureException("La facture ne peut pas être reouverte.");
-        else
-            etat = FactureEtat.OUVERTE;
+        this.etat.ouvrir();
     }
 
     /**
@@ -112,7 +107,7 @@ public class Facture {
      */
     public Facture(String description) {
         date = new Date();
-        etat = FactureEtat.OUVERTE;
+        etat = new FactureOuverte(this);
         courant = -1;
         this.description = description;
     }
@@ -122,12 +117,13 @@ public class Facture {
      * @param p un plat choisi
      * @throws FactureException Seulement si la facture est OUVERTE
      */
-    public void ajoutePlat(PlatChoisi p) throws FactureException
+    public void ajoutePlat(PlatChoisi p) throws FactureException {
+        this.etat.ajoutePlat(p);
+    }
+
+    public void ajoutePlatChoisi(PlatChoisi p)
     {
-        if (etat == FactureEtat.OUVERTE)
-            platchoisi.add(p);
-        else
-            throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
+        this.platchoisi.add(p);
     }
 
     /**
@@ -178,5 +174,9 @@ public class Facture {
         factureGenere += "          Le total est de:   " + total() + "\n";
 
         return factureGenere;
+    }
+
+    public void setEtat(FactureEtat etat) {
+        this.etat = etat;
     }
 }
