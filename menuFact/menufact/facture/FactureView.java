@@ -3,13 +3,7 @@ package menufact.facture;
 import menufact.plats.PlatChoisi;
 
 public class FactureView {
-        private final Facture facture;
-
-    public FactureView(Facture facture) {
-        this.facture = facture;
-    }
-
-    public String render() {
+    public String render(Facture facture) {
         String lesPlats = "";
         String factureGenere = "";
 

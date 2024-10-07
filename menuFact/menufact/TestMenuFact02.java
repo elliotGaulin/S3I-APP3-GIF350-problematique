@@ -4,8 +4,9 @@ import ingredients.FabriqueIngredient;
 import ingredients.Ingredient;
 import ingredients.IngredientInventaire;
 import ingredients.TypeIngredient;
-import ingredients.Legume;
 import ingredients.exceptions.IngredientException;
+import menufact.facture.FactureController;
+import menufact.facture.FactureView;
 import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
 import menufact.facture.Facture;
@@ -69,13 +70,13 @@ public class TestMenuFact02 {
         Menu m1 = Menu.getInstance("menufact.Menu 1");
         Menu m2 = Menu.getInstance("menufact.Menu 2");
 
-        Facture f1 = new Facture("Ma facture");
+        FactureController fc1 = new FactureController(new Facture("Ma facture"), new FactureView());
 
         Client c1 = new Client(1, "Mr Client", "1234567890");
 
         Chef chef = new Chef();
 
-        f1.associerChef(chef);
+        fc1.associerChef(chef);
 
 
         t.test1_AffichePlatsAuMenu(trace, p1, p2, p3, p4, p5);
@@ -97,16 +98,16 @@ public class TestMenuFact02 {
         }
 
         try {
-            t.test7_CreerFacture(f1, m1);
+            t.test7_CreerFacture(fc1, m1);
         } catch (FactureException e) {
             System.out.println(e.getMessage());
         }
 
 
-        t.test8_AjouterClientFacture(f1, c1);
+        t.test8_AjouterClientFacture(fc1, c1);
 
         try {
-            t.test8_AjouterPlatsFacture(f1, m1, 1);
+            t.test8_AjouterPlatsFacture(fc1, m1, 1);
         } catch (FactureException fe) {
             System.out.println(fe.getMessage());
         } catch (MenuException me) {
@@ -114,13 +115,13 @@ public class TestMenuFact02 {
         }
 
         try {
-            t.test9_PayerFacture(f1);
+            t.test9_PayerFacture(fc1);
         } catch (FactureException fe) {
             System.out.println(fe.getMessage());
         }
 
         try {
-            t.test8_AjouterPlatsFacture(f1, m1, 1);
+            t.test8_AjouterPlatsFacture(fc1, m1, 1);
         } catch (FactureException fe) {
             System.out.println(fe.getMessage());
         } catch (MenuException me) {
@@ -128,14 +129,14 @@ public class TestMenuFact02 {
         }
 
         try {
-            f1.ouvrir();
+            fc1.ouvrir();
         } catch (FactureException fe) {
             System.out.println(fe.getMessage());
         }
 
         System.out.println("FIN DE TOUS LES TESTS...");
 
-        System.out.println(f1.genererFacture());
+        System.out.println(fc1.genererFacture());
     }
 
     private void test1_AffichePlatsAuMenu(boolean trace, PlatAuMenu p1, PlatAuMenu p2,
@@ -256,51 +257,44 @@ public class TestMenuFact02 {
         }
     }
 
-    private void test7_CreerFacture(Facture f1, Menu m1) throws FactureException {
+    private void test7_CreerFacture(FactureController fc1, Menu m1) throws FactureException {
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(), 5);
         try {
-            f1.ajoutePlat(platChoisi);
+            fc1.ajoutePlat(platChoisi);
         } catch (FactureException fe) {
             throw fe;
         }
-        System.out.println(f1);
+        System.out.println(fc1);
     }
 
 
-    private void test8_AjouterClientFacture(Facture f1, Client c1) {
+    private void test8_AjouterClientFacture(FactureController fc1, Client c1) {
         System.out.println("===test8_AjouterClientFacture");
-        f1.associerClient(c1);
-        System.out.println(f1);
+        fc1.associerClient(c1);
+        System.out.println(fc1);
     }
 
-    private void test8_AjouterPlatsFacture(Facture f1, Menu m1, int pos) throws MenuException, FactureException {
+    private void test8_AjouterPlatsFacture(FactureController fc1, Menu m1, int pos) throws MenuException, FactureException {
         System.out.println("===test8_AjouterPlatsFacture");
-
         try {
-            for (int i = 0; i < pos; i++)
-                m1.positionSuivante();
+            fc1.ajouterPlatMenu(pos, 5);
         } catch (MenuException me) {
             throw me;
-        }
-
-        PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(), 5);
-        try {
-            f1.ajoutePlat(platChoisi);
         } catch (FactureException fe) {
             throw fe;
         }
-        System.out.println(f1);
+        System.out.println(fc1);
     }
 
-    private void test9_PayerFacture(Facture f1) throws FactureException {
+    private void test9_PayerFacture(FactureController fc1) throws FactureException {
         System.out.println("===test9_PayerFacture");
 
         System.out.println("Avant payer la facture");
-        System.out.println(f1);
-        f1.payer();
+        System.out.println(fc1);
+        fc1.payer();
         System.out.println("Apres avoir paye la facture");
-        System.out.println(f1);
+        System.out.println(fc1);
     }
 }
