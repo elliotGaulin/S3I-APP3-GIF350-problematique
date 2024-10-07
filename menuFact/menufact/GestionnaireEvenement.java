@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GestionnaireEvenement {
-    Map<String, List<EcouteurEvenement>> evenements;
+    Map<String, List<EcouteurEvenement>> evenements = new HashMap<>();
     public GestionnaireEvenement(String... typeEvenements) {
         for (String type : typeEvenements) {
             evenements.put(type, new ArrayList<EcouteurEvenement>());

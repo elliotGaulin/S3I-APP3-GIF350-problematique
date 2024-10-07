@@ -42,7 +42,7 @@ public class TestMenuFact02 {
 
         Chef chef = new Chef();
 
-        f1.gestionnaireEvenement.abonner("ajout-platChoisi", chef);
+        f1.associerChef(chef);
 
 
         t.test1_AffichePlatsAuMenu(trace, p1,p2,p3,p4,p5);

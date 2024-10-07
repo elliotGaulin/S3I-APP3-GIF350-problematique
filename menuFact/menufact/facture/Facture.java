@@ -1,5 +1,6 @@
 package menufact.facture;
 
+import menufact.Chef;
 import menufact.Client;
 import menufact.GestionnaireEvenement;
 import menufact.facture.exceptions.FactureException;
@@ -21,12 +22,13 @@ public class Facture {
     private int courant;
     private Client client;
 
-    public GestionnaireEvenement gestionnaireEvenement;
+    private GestionnaireEvenement gestionnaireEvenement;
 
 
     /**********************Constantes ************/
     private final double TPS = 0.05;
     private final double TVQ = 0.095;
+    private String evenementAjoutPlatChoisi = "ajout-platChoisi";
 
     /**
      *
@@ -113,7 +115,7 @@ public class Facture {
         etat = new FactureOuverte(this);
         courant = -1;
         this.description = description;
-        this.gestionnaireEvenement = new GestionnaireEvenement("ajout-platChoisi");
+        this.gestionnaireEvenement = new GestionnaireEvenement(evenementAjoutPlatChoisi);
     }
 
     /**
@@ -128,7 +130,7 @@ public class Facture {
     public void ajoutePlatChoisi(PlatChoisi p)
     {
         this.platchoisi.add(p);
-        gestionnaireEvenement.notifier("ajout-platChoisi", "Ajout d'un plat choisi: " + p.toString());
+        gestionnaireEvenement.notifier("ajout-platChoisi", "Veuillez procéder à la préparation du plat suivant : " + p.toString());
     }
 
     /**
@@ -183,5 +185,22 @@ public class Facture {
 
     public void setEtat(FactureEtat etat) {
         this.etat = etat;
+    }
+
+    /**
+     * Associer un chef à la facture
+     * pour écouter sur les évènements d'ajout de plats choisi
+     * @param chef
+     */
+    public void associerChef(Chef chef) {
+        gestionnaireEvenement.abonner(evenementAjoutPlatChoisi, chef);
+    }
+
+    /**
+     * Dissocier un chef à la facture
+     * @param chef
+     */
+    public void dissocierChef(Chef chef) {
+        gestionnaireEvenement.desabonner(evenementAjoutPlatChoisi, chef);
     }
 }
