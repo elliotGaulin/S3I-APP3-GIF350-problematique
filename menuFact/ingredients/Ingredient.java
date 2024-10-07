@@ -24,9 +24,13 @@ public abstract class Ingredient {
         this.description = description;
     }
 
-    public String getUniteDeMesure() { return uniteDeMesure; }
+    public String getUniteDeMesure() {
+        return uniteDeMesure;
+    }
 
-    public void setUniteDeMesure(String uniteDeMesure) { this.uniteDeMesure = uniteDeMesure; }
+    public void setUniteDeMesure(String uniteDeMesure) {
+        this.uniteDeMesure = uniteDeMesure;
+    }
 
     public TypeIngredient getTypeIngredient() {
         return typeIngredient;
@@ -34,5 +38,12 @@ public abstract class Ingredient {
 
     public void setTypeIngredient(TypeIngredient typeIngredient) {
         this.typeIngredient = typeIngredient;
+    }
+
+    @Override
+    public String toString() {
+        return "menuFact.Ingredient [nom=" + nom + ", description=" + description + ", typeIngredient=" +
+                typeIngredient + ", uniteDeMesure=" +
+                uniteDeMesure + "]";
     }
 }

@@ -27,4 +27,9 @@ public class IngredientInventaire {
         else
             this.quantite = quantite;
     }
+
+    @Override
+    public String toString() {
+        return this.ingredient.toString() + ", quantite:" + this.quantite;
+    }
 }
