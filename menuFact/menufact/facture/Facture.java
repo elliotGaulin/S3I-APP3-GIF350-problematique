@@ -67,7 +67,7 @@ public class Facture {
      *
      * @return la valeur de la TPS
      */
-    private double tps(){
+    double tps(){
         return TPS*sousTotal();
     }
 
@@ -75,7 +75,7 @@ public class Facture {
      *
      * @return la valeur de la TVQ
      */
-    private  double tvq(){
+    double tvq(){
         return TVQ*(TPS+1)*sousTotal();
     }
 
@@ -99,6 +99,22 @@ public class Facture {
     public void ouvrir() throws FactureException
     {
         this.etat.ouvrir();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Client getClient() {
+        return this.client;
+    }
+
+    public ArrayList<PlatChoisi> getPlatchoisi() {
+        return platchoisi;
     }
 
     /**
@@ -154,38 +170,6 @@ public class Facture {
                 ", TPS=" + TPS +
                 ", TVQ=" + TVQ +
                 '}';
-    }
-
-    /**
-     *
-     * @return une chaîne de caractères avec la facture à imprimer
-     */
-    public String genererFacture()
-    {
-        String lesPlats = new String();
-        String factureGenere = new String();
-
-        int i =1;
-
-
-        factureGenere =   "Facture generee.\n" +
-                          "Date:" + date + "\n" +
-                          "Description: " + description + "\n" +
-                          "Client:" + client.getNom() + "\n" +
-                          "Les plats commandes:" + "\n" + lesPlats;
-
-        factureGenere += "Seq   Plat         Prix   Quantite\n";
-        for (PlatChoisi plat : platchoisi)
-        {
-            factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
-            i++;
-        }
-
-        factureGenere += "          TPS:               " + tps() + "\n";
-        factureGenere += "          TVQ:               " + tvq() + "\n";
-        factureGenere += "          Le total est de:   " + total() + "\n";
-
-        return factureGenere;
     }
 
     public void setEtat(FactureEtat etat) {

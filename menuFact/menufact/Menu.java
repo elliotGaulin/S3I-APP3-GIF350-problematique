@@ -21,8 +21,10 @@ public class Menu {
         plat.add(p);
     }
 
-    public void position(int i)
-    {
+    public void position(int i) throws MenuException {
+        if (i >= plat.size() || i < 0) {
+            throw new MenuException("On depasse le nombre minimal ou maximal de plats.");
+        }
         courant = i;
     }
 
