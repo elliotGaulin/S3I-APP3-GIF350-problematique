@@ -4,6 +4,9 @@ import ingredients.IngredientInventaire;
 
 import java.util.ArrayList;
 
+/**
+ * Plat au menu
+ */
 public class PlatAuMenu {
     private int code;
     private String description;
@@ -30,33 +33,65 @@ public class PlatAuMenu {
                 "}\n";
     }
 
+    /**
+     *
+     * @return le code du plat
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     *
+     * @param code le code du plat
+     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**
+     *
+     * @return la description du plat
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description la description du plat
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return le prix du plat
+     */
     public double getPrix() {
         return prix;
     }
 
+    /**
+     *
+     * @param prix le prix du plat
+     */
     public void setPrix(double prix) {
         this.prix = prix;
     }
 
+    /**
+     *
+     * @return les ingrédients du plat
+     */
     public ArrayList<IngredientInventaire> getIngredients() {
         return ingredients;
     }
+    /**
+     *
+     * @param ingredients les ingrédients du plat
+     */
     public void setIngredients(ArrayList<IngredientInventaire> ingredients) {
         this.ingredients = ingredients;
     }

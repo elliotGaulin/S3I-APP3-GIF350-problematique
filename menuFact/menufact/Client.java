@@ -1,5 +1,8 @@
 package menufact;
 
+/**
+ * Client
+ */
 public class Client {
     private int idClient;
     private String nom;
@@ -11,29 +14,54 @@ public class Client {
         this.numeroCarteCredit = numeroCarteCredit;
     }
 
+    /**
+     *
+     * @return l'id du client
+     */
     public int getIdClient() {
         return idClient;
     }
 
+    /**
+     *
+     * @param idClient l'id du client
+     */
     public void setIdClient(int idClient) {
         this.idClient = idClient;
     }
 
+    /**
+     *
+     * @return le nom du client
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom le nom du client
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return le numéro de carte de crédit du client
+     */
     public String getNumeroCarteCredit() {
         return numeroCarteCredit;
     }
 
+    /**
+     *
+     * @param numeroCarteCredit le numéro de carte de crédit du client
+     */
     public void setNumeroCarteCredit(String numeroCarteCredit) {
         this.numeroCarteCredit = numeroCarteCredit;
     }
+
 
     @Override
     public String toString() {

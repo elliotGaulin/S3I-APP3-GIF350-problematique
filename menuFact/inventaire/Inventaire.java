@@ -73,6 +73,11 @@ public class Inventaire {
         return true;
     }
 
+    /**
+     * Retourner l'inventaire des ingrédients
+     *
+     * @return
+     */
     public Map<String, Integer> getIngredientInventaires() {
         return ingredientInventaires;
     }
