@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 /**
- * Facade pour gérer l'ajout d'un plat choisi à une facture, vérification de l'inventaire, et notification
+ * Facade pour gérer l'ajout d'un plat choisi à une facture, vérification de l'inventaire
+ * et notification au Chef
  */
 public class FactureFacade {
 
