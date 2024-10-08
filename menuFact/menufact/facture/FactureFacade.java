@@ -50,6 +50,8 @@ public class FactureFacade {
             inventaire.verifierEtMettreAJourInventaireIngredient(ingredientsNecessaires);
         } catch (IngredientException exception) {
             p.impossibleServir();
+            throw new IngredientException("Impossible de servir le plat : manque d'ingrédients.");
+
         }
 
         factureController.ajoutePlat(p);

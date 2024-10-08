@@ -7,9 +7,9 @@ public class PlatChoisi {
     private int quantite;
     private PlatEtat etat;
 
-    public PlatChoisi(PlatAuMenu plat, int quantite) {
+    public PlatChoisi(PlatAuMenu plat, int quantite) throws PlatException {
         this.plat = plat;
-        this.quantite = quantite;
+        setQuantite(quantite);
         this.etat = new PlatCommandee(this);
     }
 
@@ -25,7 +25,10 @@ public class PlatChoisi {
         return quantite;
     }
 
-    public void setQuantite(int quantite) {
+    public void setQuantite(int quantite) throws PlatException {
+        if (quantite < 1) {
+            throw new PlatException("La quantité doit être supérieure à 0.");
+        }
         this.quantite = quantite;
     }
 

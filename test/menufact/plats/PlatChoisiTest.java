@@ -17,7 +17,7 @@ class PlatChoisiTest {
     ArrayList<IngredientInventaire> ingredients;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws PlatException {
 
         platAuMenu = new PlatAuMenu(1, "Spaghetti", 10.99, ingredients);
         platChoisi = new PlatChoisi(platAuMenu, 2); // Quantité de 2
@@ -35,7 +35,7 @@ class PlatChoisiTest {
     }
 
     @Test
-    void setQuantite() {
+    void setQuantite() throws PlatException {
         platChoisi.setQuantite(5);
         assertEquals(5, platChoisi.getQuantite());
     }
