@@ -9,16 +9,16 @@ import java.util.*;
 /**
  * L'inventaire des ingrédients du système MenuFact
  *
- * @author Vincent Bélisle
  */
 public class Inventaire {
-    private final Map<Ingredient, Integer> ingredientInventaires = new HashMap<>();
+    private Map<String, Integer> ingredientInventaires = new HashMap<>();
     private static Inventaire instance;
 
-    private Inventaire(Optional<Map<Ingredient, Integer>> ingredientInventaires) {
+    private Inventaire(Optional<Map<String, Integer>> ingredientInventaires) {
+        this.ingredientInventaires = ingredientInventaires.get();
     }
 
-    public static Inventaire getInstance(Optional<Map<Ingredient, Integer>> ingredientInventaires) {
+    public static Inventaire getInstance(Optional<Map<String, Integer>> ingredientInventaires) {
         if (instance == null) {
             instance = new Inventaire(ingredientInventaires);
         }
@@ -33,7 +33,7 @@ public class Inventaire {
      * @throws IngredientException
      */
     public void modifierInventaireIngredient(Ingredient ingredient, int quantite) throws IngredientException {
-        ingredientInventaires.put(ingredient, quantite);
+        ingredientInventaires.put(ingredient.getNom(), quantite);
     }
 
     /**
@@ -48,7 +48,7 @@ public class Inventaire {
             return true;
         }
 
-        Map<Ingredient, Integer> misesAJour = new HashMap<>();
+        Map<String, Integer> misesAJour = new HashMap<>();
 
         for (IngredientInventaire ingredientInventaire : ingredients) {
             int quantite = ingredientInventaire.getQuantite();
@@ -57,19 +57,23 @@ public class Inventaire {
                 continue;
             }
 
-            Integer quantiteDisponible = ingredientInventaires.get(ingredientInventaire.getIngredient());
+            Integer quantiteDisponible = ingredientInventaires.get(ingredientInventaire.getIngredient().getNom());
 
             if (quantiteDisponible == null || quantiteDisponible < quantite) {
                 throw new IngredientException("Il manque des ingrédients");
             }
 
-            misesAJour.put(ingredientInventaire.getIngredient(), quantiteDisponible - quantite);
+            misesAJour.put(ingredientInventaire.getIngredient().getNom(), quantiteDisponible - quantite);
         }
 
         // Pour chaque entrée dans la Map de mises à jour, mettre à jour dans l'inventaire
         ingredientInventaires.putAll(misesAJour);
 
         return true;
+    }
+
+    public Map<String, Integer> getIngredientInventaires() {
+        return ingredientInventaires;
     }
 
 }

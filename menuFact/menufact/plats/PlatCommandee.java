@@ -3,7 +3,10 @@ package menufact.plats;
 import menufact.facture.Facture;
 import menufact.plats.exceptions.PlatException;
 
-public class PlatCommandee extends  PlatEtat{
+/**
+ * État COMMANDÉE pour un platChoisi
+ */
+public class PlatCommandee extends PlatEtat {
     public PlatCommandee(PlatChoisi platChoisi) {
         super(platChoisi);
     }
@@ -21,16 +24,19 @@ public class PlatCommandee extends  PlatEtat{
 
     @Override
     public void terminee() throws PlatException {
+        throw new PlatException("Un plat COMMANDÉE ne peut pas être mis comme TERMINÉE");
 
     }
 
     @Override
     public void servir() throws PlatException {
+        throw new PlatException("Un plat COMMANDÉE ne peut pas être mis comme SERVI");
 
     }
 
     @Override
     public void impossibleServir() throws PlatException {
+        getPlatChoisi().setEtat(new PlatImpossibleServir(getPlatChoisi()));
 
     }
 }

@@ -1,5 +1,7 @@
 package menufact.facture;
 
+import ingredients.exceptions.IngredientException;
+import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 
@@ -18,7 +20,7 @@ public class FactureOuverte extends FactureEtat {
 
     public void ouvrir() {}
 
-    public void ajoutePlat(PlatChoisi p) {
+    public void ajoutePlat(PlatChoisi p) throws IngredientException, FactureException {
         this.getFacture().ajoutePlatChoisi(p);
     }
 

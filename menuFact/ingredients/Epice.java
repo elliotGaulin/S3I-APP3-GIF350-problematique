@@ -19,12 +19,12 @@ public class Epice extends Ingredient{
      */
     @Override
     public Epice creerIngredient(String nom, String description, String uniteDeMesure) {
-        this.setNom(nom);
-        this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.EPICE);
-        this.setUniteDeMesure(uniteDeMesure);
-
-        return this;
+        Epice e = new Epice();
+        e.setNom(nom);
+        e.setDescription(description);
+        e.setUniteDeMesure(uniteDeMesure);
+        e.setTypeIngredient(TypeIngredient.EPICE);
+        return e;
 
     }
 }

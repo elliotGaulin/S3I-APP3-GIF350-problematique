@@ -19,12 +19,12 @@ public class Legume extends Ingredient{
      */
     @Override
     public Legume creerIngredient(String nom, String description, String uniteDeMesure) {
-        this.setNom(nom);
-        this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.LEGUME);
-        this.setUniteDeMesure(uniteDeMesure);
-
-        return this;
+        Legume l = new Legume();
+        l.setNom(nom);
+        l.setDescription(description);
+        l.setUniteDeMesure(uniteDeMesure);
+        l.setTypeIngredient(TypeIngredient.LEGUME);
+        return l;
 
     }
 }

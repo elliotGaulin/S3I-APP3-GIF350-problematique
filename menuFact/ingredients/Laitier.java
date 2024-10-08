@@ -20,12 +20,12 @@ public class Laitier extends Ingredient{
      */
     @Override
     public Laitier creerIngredient(String nom, String description, String uniteDeMesure) {
-        this.setNom(nom);
-        this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.LAITIER);
-        this.setUniteDeMesure(uniteDeMesure);
-
-        return this;
+        Laitier l = new Laitier();
+        l.setNom(nom);
+        l.setDescription(description);
+        l.setUniteDeMesure(uniteDeMesure);
+        l.setTypeIngredient(TypeIngredient.LAITIER);
+        return l;
 
     }
 }

@@ -20,12 +20,12 @@ public class Viande extends Ingredient{
      */
     @Override
     public Viande creerIngredient(String nom, String description, String uniteDeMesure) {
-        this.setNom(nom);
-        this.setDescription(description);
-        this.setTypeIngredient(TypeIngredient.VIANDE);
-        this.setUniteDeMesure(uniteDeMesure);
-
-        return this;
+        Viande v = new Viande();
+        v.setNom(nom);
+        v.setDescription(description);
+        v.setUniteDeMesure(uniteDeMesure);
+        v.setTypeIngredient(TypeIngredient.VIANDE);
+        return v;
 
     }
 }

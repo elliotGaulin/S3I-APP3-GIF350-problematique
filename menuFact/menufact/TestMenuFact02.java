@@ -5,6 +5,7 @@ import ingredients.Ingredient;
 import ingredients.IngredientInventaire;
 import ingredients.TypeIngredient;
 import ingredients.exceptions.IngredientException;
+import inventaire.Inventaire;
 import menufact.facture.FactureController;
 import menufact.facture.FactureView;
 import menufact.facture.exceptions.FactureException;
@@ -15,22 +16,21 @@ import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class TestMenuFact02 {
 
-    static
-    {
-        try
-        {
-           Class.forName("ingredients.Legume");
-           Class.forName("ingredients.Viande");
-           Class.forName("ingredients.Fruit");
-           Class.forName("ingredients.Laitier");
-           Class.forName("ingredients.Epice");
+    static {
+        try {
+            Class.forName("ingredients.Legume");
+            Class.forName("ingredients.Viande");
+            Class.forName("ingredients.Fruit");
+            Class.forName("ingredients.Laitier");
+            Class.forName("ingredients.Epice");
 
-        }
-        catch (ClassNotFoundException any)
-        {
+        } catch (ClassNotFoundException any) {
             any.printStackTrace();
         }
     }
@@ -46,9 +46,20 @@ public class TestMenuFact02 {
 
         ArrayList<IngredientInventaire> ingredients = new ArrayList<>();
 
-        ingredients.add(new IngredientInventaire(carotte, 5));
-        ingredients.add(new IngredientInventaire(poulet, 10));
-        ingredients.add(new IngredientInventaire(boeuf, 15));
+        Map<String, Integer> mapIngredients = new HashMap<>();
+
+        mapIngredients.put(carotte.getNom(), 50);
+        mapIngredients.put(boeuf.getNom(), 50);
+        mapIngredients.put(poulet.getNom(), 50);
+
+
+        Inventaire inventaire = Inventaire.getInstance(
+                Optional.of(mapIngredients));
+
+
+        ingredients.add(new IngredientInventaire(carotte, 1));
+        ingredients.add(new IngredientInventaire(poulet, 1));
+        ingredients.add(new IngredientInventaire(boeuf, 1));
 
 
         TestMenuFact02 t = new TestMenuFact02();
@@ -257,7 +268,7 @@ public class TestMenuFact02 {
         }
     }
 
-    private void test7_CreerFacture(FactureController fc1, Menu m1) throws FactureException {
+    private void test7_CreerFacture(FactureController fc1, Menu m1) throws FactureException, IngredientException {
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(), 5);

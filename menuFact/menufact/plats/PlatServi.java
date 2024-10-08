@@ -2,6 +2,9 @@ package menufact.plats;
 
 import menufact.plats.exceptions.PlatException;
 
+/**
+ * État SERVI pour un plat choisi
+ */
 public class PlatServi extends  PlatEtat{
     public PlatServi(PlatChoisi platChoisi) {
         super(platChoisi);

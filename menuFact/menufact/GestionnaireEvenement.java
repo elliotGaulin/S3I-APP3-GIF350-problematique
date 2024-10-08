@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Gestionnaire d'évènements
+ */
 public class GestionnaireEvenement {
     Map<String, List<EcouteurEvenement>> evenements = new HashMap<>();
     public GestionnaireEvenement(String... typeEvenements) {

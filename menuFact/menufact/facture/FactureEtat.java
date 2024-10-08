@@ -1,5 +1,6 @@
 package menufact.facture;
 
+import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatChoisi;
 
@@ -13,7 +14,7 @@ public abstract class FactureEtat {
     public abstract void payer() throws FactureException;
     public abstract void fermer() throws FactureException;
     public abstract void ouvrir() throws FactureException;
-    public abstract void ajoutePlat(PlatChoisi p) throws FactureException;
+    public abstract void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException;
 
     public Facture getFacture() {
         return facture;

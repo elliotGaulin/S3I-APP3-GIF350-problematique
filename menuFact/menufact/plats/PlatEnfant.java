@@ -4,6 +4,9 @@ import ingredients.IngredientInventaire;
 
 import java.util.ArrayList;
 
+/**
+ * Un plat enfant
+ */
 public class PlatEnfant extends PlatAuMenu{
     private double proportion;
 

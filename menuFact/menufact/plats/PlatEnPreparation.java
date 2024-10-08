@@ -2,13 +2,17 @@ package menufact.plats;
 
 import menufact.plats.exceptions.PlatException;
 
-public class PlatEnPreparation extends  PlatEtat{
+/**
+ * État EN PRÉPARATION pour un plat choisi
+ */
+public class PlatEnPreparation extends PlatEtat {
     public PlatEnPreparation(PlatChoisi platChoisi) {
         super(platChoisi);
     }
 
     @Override
     public void commandee() throws PlatException {
+        throw new PlatException("Un plat en préparation ne peut pas être mis comme COMMANDÉE");
 
     }
 
@@ -24,10 +28,13 @@ public class PlatEnPreparation extends  PlatEtat{
 
     @Override
     public void servir() throws PlatException {
-        throw new PlatException("Un plat en préparation ne peut pas être servi.");
+        throw new PlatException("Un plat en préparation ne peut pas être SERVI.");
     }
 
     @Override
     public void impossibleServir() throws PlatException {
+
+        getPlatChoisi().setEtat(new PlatImpossibleServir(getPlatChoisi()));
+
     }
 }
