@@ -3,7 +3,6 @@ package menufact;
 import Iterateur.IIterable;
 import Iterateur.IIterateur;
 import menufact.exceptions.IterateurException;
-import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;
 
 import java.util.ArrayList;
@@ -60,6 +59,11 @@ public class Menu implements IIterable<PlatAuMenu> {
                 '}';
     }
 
+    /**
+     * Crée un itérateur pour le menu
+     * @return
+     * @throws IterateurException
+     */
     @Override
     public IIterateur<PlatAuMenu> creerIterateur() throws IterateurException {
         if (plat.isEmpty()) {
@@ -72,19 +76,32 @@ public class Menu implements IIterable<PlatAuMenu> {
     private class IterateurMenu implements IIterateur<PlatAuMenu> {
         private int courant = 0;
 
+        /**
+         * Vérifie si on peut aller à un plat suivant
+         * @return Vrai si on peut aller à un plat suivant, faux sinon
+         */
         @Override
         public boolean aSuivant() {
             return courant < plat.size() - 1;
         }
 
+        /**
+         * Vérifie si on peut aller à un plat précédent
+         * @return Vrai si on peut aller à un plat précédent, faux sinon
+         */
         @Override
-        public boolean aPrecedant() {
+        public boolean aPrecedent() {
             return courant > 0;
         }
 
+        /**
+         * Retourne le plat précédent
+         * @return Le plat précédent
+         * @throws IterateurException Si on dépasse la limite inférieure de l'itérable
+         */
         @Override
         public PlatAuMenu positionPrecedente() throws IterateurException {
-            if(!aPrecedant()) {
+            if(!aPrecedent()) {
                 throw new IterateurException("On depasse la limite inferieure de l'iterable.");
             }
 
@@ -92,6 +109,11 @@ public class Menu implements IIterable<PlatAuMenu> {
             return courant();
         }
 
+        /**
+         * Retourne le plat suivant
+         * @return Le plat suivant
+         * @throws IterateurException Si on dépasse la limite supérieure de l'itérable
+         */
         @Override
         public PlatAuMenu positionSuivante() throws IterateurException {
             if (!aSuivant()) {
@@ -102,18 +124,32 @@ public class Menu implements IIterable<PlatAuMenu> {
             return courant();
         }
 
+        /**
+         * Retourne le premier plat du menu
+         * @return Le premier plat du menu
+         */
         @Override
         public PlatAuMenu premier() {
             courant = 0;
             return courant();
         }
 
+        /**
+         * Retourne le dernier plat du menu
+         * @return Le dernier plat du menu
+         */
         @Override
         public PlatAuMenu dernier() {
             courant = plat.size() - 1;
             return courant();
         }
 
+        /**
+         * Retourne le plat à la position i
+         * @param i La position du plat
+         * @return Le plat à la position i
+         * @throws IterateurException Si la position est invalide
+         */
         @Override
         public PlatAuMenu position(int i) throws IterateurException {
             if (i >= plat.size() || i < 0) {
@@ -123,6 +159,10 @@ public class Menu implements IIterable<PlatAuMenu> {
             return courant();
         }
 
+        /**
+         * Retourne le plat courant
+         * @return Le plat courant
+         */
         @Override
         public PlatAuMenu courant() {
             return plat.get(courant);

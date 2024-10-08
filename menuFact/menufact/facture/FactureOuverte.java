@@ -12,7 +12,7 @@ public class FactureOuverte extends FactureEtat {
     }
 
     public void payer() {
-        this.getFacture().setEtat(new FactureFermee(this.getFacture()) );
+        this.getFacture().setEtat(new FacturePayee(this.getFacture()) );
     }
 
     public void fermer() {
@@ -29,5 +29,4 @@ public class FactureOuverte extends FactureEtat {
     public String toString() {
         return "Ouverte";
     }
-//    public void retirerPlat(PlatAuMenu platAuMenu);
 }

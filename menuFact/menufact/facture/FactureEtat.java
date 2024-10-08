@@ -23,5 +23,4 @@ public abstract class FactureEtat {
 
     @Override
     public abstract String toString();
-//TODO?:    public abstract void function retirerPlat(PlatAuMenu platAuMenu);
 }

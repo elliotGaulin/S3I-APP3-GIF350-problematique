@@ -4,7 +4,7 @@ import menufact.exceptions.IterateurException;
 
 public interface IIterateur<T> {
     public boolean aSuivant();
-    public boolean aPrecedant();
+    public boolean aPrecedent();
 
     public T positionPrecedente() throws IterateurException;
     public T positionSuivante() throws IterateurException;
