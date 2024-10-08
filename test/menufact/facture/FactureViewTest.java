@@ -1,15 +1,14 @@
 package menufact.facture;
 
-import Iterateur.IIterable;
-import Iterateur.IIterateur;
-import ingredients.FabriqueIngredient;
-import ingredients.Ingredient;
-import ingredients.IngredientInventaire;
-import ingredients.TypeIngredient;
-import ingredients.exceptions.IngredientException;
-import inventaire.Inventaire;
+import menufact.Iterateur.IIterateur;
+import menufact.ingredients.FabriqueIngredient;
+import menufact.ingredients.Ingredient;
+import menufact.ingredients.IngredientInventaire;
+import menufact.ingredients.TypeIngredient;
+import menufact.ingredients.exceptions.IngredientException;
+import menufact.inventaire.Inventaire;
 import menufact.Client;
-import menufact.Menu;
+import menufact.menu.Menu;
 import menufact.TestMenuFact02;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
@@ -28,11 +27,11 @@ public class FactureViewTest {
     @BeforeAll
     public static void setUp() {
         try {
-            Class.forName("ingredients.Legume");
-            Class.forName("ingredients.Viande");
-            Class.forName("ingredients.Fruit");
-            Class.forName("ingredients.Laitier");
-            Class.forName("ingredients.Epice");
+            Class.forName("menufact.ingredients.Legume");
+            Class.forName("menufact.ingredients.Viande");
+            Class.forName("menufact.ingredients.Fruit");
+            Class.forName("menufact.ingredients.Laitier");
+            Class.forName("menufact.ingredients.Epice");
 
         } catch (ClassNotFoundException any) {
             any.printStackTrace();
@@ -82,7 +81,7 @@ public class FactureViewTest {
         PlatSante ps5 = new PlatSante(14, "PlatSante4", 50, ingredients, 11, 11, 11);
 
 
-        Menu m1 = Menu.getInstance("menufact.Menu 1");
+        Menu m1 = Menu.getInstance("menufact.menu.Menu 1");
 
         m1.ajoute(p1);
         m1.ajoute(p2);

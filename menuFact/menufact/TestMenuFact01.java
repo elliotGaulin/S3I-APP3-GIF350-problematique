@@ -1,13 +1,16 @@
 package menufact;
 
-import Iterateur.IIterateur;
-import ingredients.Ingredient;
-import ingredients.IngredientInventaire;
+import menufact.Iterateur.IIterateur;
+import menufact.ingredients.IngredientInventaire;
 import menufact.facture.Facture;
+import menufact.menu.Menu;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TestMenuFact01 {
@@ -32,20 +35,20 @@ public class TestMenuFact01 {
             PlatSante ps2 = new PlatSante(3, "Salade Cesar", 8.25, ingredients, 100, 10, 1);
             System.out.println(ps2);
 
-            System.out.println("===menufact.Menu ajout avec 4 plats");
+            System.out.println("===menufact.menu.Menu ajout avec 4 plats");
             Menu menu = Menu.getInstance("Menu1");
             menu.ajoute(p1);
             menu.ajoute(p2);
             menu.ajoute(ps1);
             menu.ajoute(ps2);
-            System.out.println(menu);
+            ecrireAuFichier(menu.toString());
 
-            System.out.println("===menufact.Menu position 1, plat à la position 0");
+            System.out.println("===menufact.menu.Menu position 1, plat à la position 0");
             IIterateur<PlatAuMenu> it = menu.creerIterateur();
             it.position(0);
             System.out.println(it.courant());
 
-            System.out.println("===menufact.Menu position 1, plat à la position suivante 1");
+            System.out.println("===menufact.menu.Menu position 1, plat à la position suivante 1");
             it.positionSuivante();
             System.out.println(it.courant());
 
@@ -93,5 +96,18 @@ public class TestMenuFact01 {
             System.out.println(fe.getMessage());
         }
 
+    }
+
+    public static void ecrireAuFichier(String texte)
+    {
+        String fileName = "out.txt";
+
+        // Écriture dans le fichier
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            writer.write(texte);
+            System.out.println("Écriture dans le fichier: " + fileName);
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'écriture dans le fichier: " + e.getMessage());
+        }
     }
 }

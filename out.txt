@@ -1,0 +1,29 @@
+
+Facture generee.
+Date:Tue Oct 08 10:05:39 EDT 2024
+Description: Ma facture
+Client:Mr Client
+Les plats commandes:
+Seq   Plat         Prix   Quantite
+1     PlatAuMenu0  10.0      5
+2     PlatAuMenu1  20.0      5
+          TPS:               7.5
+          TVQ:               14.9625
+          Le total est de:   172.4625
+Facture generee.
+Date:Tue Oct 08 10:07:08 EDT 2024
+Description: Ma facture
+Client:Mr Client
+Les plats commandes:
+Seq   Plat         Prix   Quantite
+1     PlatAuMenu0  10.0      5
+2     PlatAuMenu1  20.0      5
+          TPS:               7.5
+          TVQ:               14.9625
+          Le total est de:   172.4625
+menufact.menu.Menu{description='Menu1', plat=
+[menufact.plats.PlatAuMenu{code=0, description='Frites sauce', prix=11.5, ingredients=[]}
+, menufact.plats.PlatAuMenu{code=1, description='Frites', prix=10.25, ingredients=[]}
+, menufact.plats.PlatSante{kcal=100.0, chol=10.0, gras=1.0} menufact.plats.PlatAuMenu{code=2, description='Salade', prix=5.25, ingredients=[]}
+, menufact.plats.PlatSante{kcal=100.0, chol=10.0, gras=1.0} menufact.plats.PlatAuMenu{code=3, description='Salade Cesar', prix=8.25, ingredients=[]}
+]}

@@ -1,9 +1,9 @@
 package menufact.facture;
 
-import ingredients.IngredientInventaire;
-import ingredients.exceptions.IngredientException;
-import inventaire.Inventaire;
-import observateur.GestionnaireEvenement;
+import menufact.ingredients.IngredientInventaire;
+import menufact.ingredients.exceptions.IngredientException;
+import menufact.inventaire.Inventaire;
+import menufact.observateur.GestionnaireEvenement;
 import menufact.plats.PlatChoisi;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.exceptions.PlatException;

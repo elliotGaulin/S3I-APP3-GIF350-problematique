@@ -1,4 +1,4 @@
-package menufact.exceptions;
+package menufact.menu.exceptions;
 
 public class MenuException extends Exception{
 

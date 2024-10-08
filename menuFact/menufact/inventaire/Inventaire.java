@@ -1,8 +1,8 @@
-package inventaire;
+package menufact.inventaire;
 
-import ingredients.Ingredient;
-import ingredients.IngredientInventaire;
-import ingredients.exceptions.IngredientException;
+import menufact.ingredients.Ingredient;
+import menufact.ingredients.IngredientInventaire;
+import menufact.ingredients.exceptions.IngredientException;
 
 import java.util.*;
 

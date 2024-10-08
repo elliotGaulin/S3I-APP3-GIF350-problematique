@@ -1,6 +1,6 @@
 package menufact.plats;
 
-import ingredients.IngredientInventaire;
+import menufact.ingredients.IngredientInventaire;
 import menufact.plats.exceptions.PlatException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

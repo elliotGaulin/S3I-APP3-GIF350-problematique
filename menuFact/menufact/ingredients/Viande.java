@@ -1,4 +1,4 @@
-package ingredients;
+package menufact.ingredients;
 
 /**
  * Classe Viande pour représenter

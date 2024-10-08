@@ -1,15 +1,22 @@
 package menufact.facture;
 
-import ingredients.exceptions.IngredientException;
-import observateur.Chef;
+import menufact.ingredients.exceptions.IngredientException;
+import menufact.observateur.Chef;
 import menufact.Client;
-import menufact.Menu;
-import menufact.exceptions.MenuException;
+import menufact.menu.Menu;
+import menufact.menu.exceptions.MenuException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.exceptions.PlatException;
 
+/**
+ * Classe FactureController
+ * Insipiré de : https://www.geeksforgeeks.org/mvc-design-pattern/
+ * @version 1.0
+ * @auteur Elliot Gaulin
+ * @date 2024-10-08
+ */
 public class FactureController {
         private Facture facture;
         private FactureView factureView;
@@ -54,5 +61,8 @@ public class FactureController {
             facture.ajoutePlat(p);
         }
 
-
+        @Override
+        public String toString() {
+            return "Facture :" + this.facture + "\n View :" + this.factureView;
+        }
 }

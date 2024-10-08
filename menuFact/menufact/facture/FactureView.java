@@ -2,6 +2,13 @@ package menufact.facture;
 
 import menufact.plats.PlatChoisi;
 
+/**
+ * Classe FactureView
+ * Insipiré de : https://www.geeksforgeeks.org/mvc-design-pattern/
+ * @version 1.0
+ * @auteur Elliot Gaulin
+ * @date 2024-10-08
+ */
 public class FactureView {
     public String render(Facture facture) {
         String lesPlats = "";
@@ -27,5 +34,10 @@ public class FactureView {
         factureGenere += "          Le total est de:   " + facture.total() + "\n";
 
         return factureGenere;
+    }
+
+    @Override
+    public String toString() {
+        return "FactureView";
     }
 }

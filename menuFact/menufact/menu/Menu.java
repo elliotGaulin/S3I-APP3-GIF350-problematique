@@ -1,8 +1,8 @@
-package menufact;
+package menufact.menu;
 
-import Iterateur.IIterable;
-import Iterateur.IIterateur;
-import menufact.exceptions.IterateurException;
+import menufact.Iterateur.IIterable;
+import menufact.Iterateur.IIterateur;
+import menufact.Iterateur.exceptions.IterateurException;
 import menufact.plats.PlatAuMenu;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class Menu implements IIterable<PlatAuMenu> {
 
     @Override
     public String toString() {
-        return "menufact.Menu{" +
+        return "menufact.menu.Menu{" +
                 "description='" + description + '\'' +
                 ", plat=" + "\n" + plat +
                 '}';

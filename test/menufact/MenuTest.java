@@ -1,8 +1,9 @@
 package menufact;
 
-import Iterateur.IIterateur;
-import ingredients.IngredientInventaire;
-import menufact.exceptions.IterateurException;
+import menufact.Iterateur.IIterateur;
+import menufact.ingredients.IngredientInventaire;
+import menufact.Iterateur.exceptions.IterateurException;
+import menufact.menu.Menu;
 import menufact.plats.PlatAuMenu;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

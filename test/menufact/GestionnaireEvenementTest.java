@@ -1,7 +1,7 @@
 package menufact;
 
-import observateur.Chef;
-import observateur.GestionnaireEvenement;
+import menufact.observateur.Chef;
+import menufact.observateur.GestionnaireEvenement;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
