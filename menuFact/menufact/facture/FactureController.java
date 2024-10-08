@@ -1,7 +1,7 @@
 package menufact.facture;
 
 import ingredients.exceptions.IngredientException;
-import menufact.Chef;
+import observateur.Chef;
 import menufact.Client;
 import menufact.Menu;
 import menufact.exceptions.MenuException;

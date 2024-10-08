@@ -1,5 +1,8 @@
 package menufact;
 
+import observateur.Chef;
+import observateur.GestionnaireEvenement;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,13 +22,21 @@ class GestionnaireEvenementTest {
     @BeforeEach
     void setUp() {
         // Initialisation du gestionnaire d'événements avec différents types
-        gestionnaireEvenement = new GestionnaireEvenement("type1", "type2");
+        gestionnaireEvenement = GestionnaireEvenement.getInstance("type1", "type2");
 
-        chef = new Chef();
+        chef = new Chef("Chef");
 
         // Permet de capturer les messages de System.out
         System.setOut(new PrintStream(outputStreamCaptor));
     }
+
+    @AfterEach
+    void tearDown() {
+        gestionnaireEvenement.desabonner("type1", chef);
+        gestionnaireEvenement.desabonner("type2", chef);
+
+    }
+
 
     @Test
     void abonner() {

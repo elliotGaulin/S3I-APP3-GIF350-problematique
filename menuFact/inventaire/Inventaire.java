@@ -11,11 +11,11 @@ import java.util.*;
  *
  */
 public class Inventaire {
-    private Map<String, Integer> ingredientInventaires = new HashMap<>();
+    private Map<String, Integer> ingredientInventaires;
     private static Inventaire instance;
 
     private Inventaire(Optional<Map<String, Integer>> ingredientInventaires) {
-        this.ingredientInventaires = ingredientInventaires.get();
+        this.ingredientInventaires = ingredientInventaires.orElse(new HashMap<>());
     }
 
     public static Inventaire getInstance(Optional<Map<String, Integer>> ingredientInventaires) {
@@ -38,6 +38,7 @@ public class Inventaire {
 
     /**
      * Verifier si tous les ingrédients nécessaires sont disponibles
+     * et mettre à jour l'inventaire
      *
      * @param ingredients
      * @return
@@ -72,6 +73,11 @@ public class Inventaire {
         return true;
     }
 
+    /**
+     * Retourner l'inventaire des ingrédients
+     *
+     * @return
+     */
     public Map<String, Integer> getIngredientInventaires() {
         return ingredientInventaires;
     }

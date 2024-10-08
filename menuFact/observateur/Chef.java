@@ -1,9 +1,13 @@
-package menufact;
+package observateur;
 
 /**
  * Un Chef pour le système menuFact
  */
-public class Chef implements EcouteurEvenement{
+public class Chef implements IEcouteurEvenement {
+
+    public Chef(String nom) {
+        this.nom = nom;
+    }
 
     private String nom;
     @Override

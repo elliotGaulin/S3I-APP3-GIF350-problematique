@@ -9,6 +9,7 @@ import ingredients.exceptions.IngredientException;
 import menufact.exceptions.IterateurException;
 import inventaire.Inventaire;
 import menufact.facture.FactureController;
+import menufact.facture.FactureFacade;
 import menufact.facture.FactureView;
 import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
@@ -17,6 +18,7 @@ import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 import menufact.plats.exceptions.PlatException;
+import observateur.Chef;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -88,7 +90,7 @@ public class TestMenuFact02 {
 
         Client c1 = new Client(1, "Mr Client", "1234567890");
 
-        Chef chef = new Chef();
+        Chef chef = new Chef("Mr Chef");
 
         fc1.associerChef(chef);
 
@@ -278,8 +280,10 @@ public class TestMenuFact02 {
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.creerIterateur().courant(), 5);
+
+        FactureFacade factureFacade = new FactureFacade();
         try {
-            fc1.ajoutePlat(platChoisi);
+            factureFacade.ajoutePlatChoisi(fc1, platChoisi);
         } catch (FactureException fe) {
             throw fe;
         }
