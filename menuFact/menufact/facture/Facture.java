@@ -12,6 +12,7 @@ import menufact.exceptions.IterateurException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
+import menufact.plats.exceptions.PlatException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -142,11 +143,11 @@ public class Facture implements IIterable<PlatChoisi> {
      * @param p un plat choisi
      * @throws FactureException Seulement si la facture est OUVERTE
      */
-    public void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException {
+    public void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException, PlatException {
         this.etat.ajoutePlat(p);
     }
 
-    public void ajoutePlatChoisi(PlatChoisi p) throws IngredientException, FactureException {
+    public void ajoutePlatChoisi(PlatChoisi p) throws IngredientException, PlatException, FactureException {
         ArrayList<IngredientInventaire> ingredientsNecessaire = new ArrayList<IngredientInventaire>();
 
         // Mettre la bonne quantite
@@ -154,7 +155,14 @@ public class Facture implements IIterable<PlatChoisi> {
             ingredientsNecessaire.add(new IngredientInventaire(ingInventaire.getIngredient(), ingInventaire.getQuantite() * p.getQuantite()));
         }
 
-        inventaire.verifierEtMettreAJourInventaireIngredient(ingredientsNecessaire);
+        try {
+            inventaire.verifierEtMettreAJourInventaireIngredient(ingredientsNecessaire);
+        }
+        catch(IngredientException exception)
+        {
+            p.impossibleServir();
+            return;
+        }
         this.platchoisi.add(p);
         gestionnaireEvenement.notifier(evenementAjoutPlatChoisi, "Veuillez procéder à la préparation du plat suivant : " + p.toString());
     }

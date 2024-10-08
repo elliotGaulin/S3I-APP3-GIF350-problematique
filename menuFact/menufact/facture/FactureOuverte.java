@@ -4,6 +4,7 @@ import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
+import menufact.plats.exceptions.PlatException;
 
 public class FactureOuverte extends FactureEtat {
     public FactureOuverte(Facture facture) {
@@ -20,7 +21,7 @@ public class FactureOuverte extends FactureEtat {
 
     public void ouvrir() {}
 
-    public void ajoutePlat(PlatChoisi p) throws IngredientException, FactureException {
+    public void ajoutePlat(PlatChoisi p) throws IngredientException, FactureException, PlatException {
         this.getFacture().ajoutePlatChoisi(p);
     }
 
