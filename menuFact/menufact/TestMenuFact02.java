@@ -9,6 +9,7 @@ import ingredients.exceptions.IngredientException;
 import menufact.exceptions.IterateurException;
 import inventaire.Inventaire;
 import menufact.facture.FactureController;
+import menufact.facture.FactureFacade;
 import menufact.facture.FactureView;
 import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
@@ -278,8 +279,10 @@ public class TestMenuFact02 {
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.creerIterateur().courant(), 5);
+
+        FactureFacade factureFacade = new FactureFacade();
         try {
-            fc1.ajoutePlat(platChoisi);
+            factureFacade.ajoutePlatChoisi(fc1, platChoisi);
         } catch (FactureException fe) {
             throw fe;
         }

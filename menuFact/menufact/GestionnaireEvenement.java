@@ -10,6 +10,16 @@ import java.util.Map;
  */
 public class GestionnaireEvenement {
     Map<String, List<EcouteurEvenement>> evenements = new HashMap<>();
+    private static GestionnaireEvenement instance;
+
+    public static String evenementAjoutPlatChoisi = "ajoutPlatChoisi";
+
+    public static GestionnaireEvenement getInstance(String... typeEvenements) {
+        if (instance == null) {
+            instance = new GestionnaireEvenement(typeEvenements);
+        }
+        return instance;
+    }
     public GestionnaireEvenement(String... typeEvenements) {
         for (String type : typeEvenements) {
             evenements.put(type, new ArrayList<EcouteurEvenement>());

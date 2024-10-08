@@ -33,14 +33,10 @@ public class Facture implements IIterable<PlatChoisi> {
     private Client client;
 
 
-    private Inventaire inventaire;
-    private GestionnaireEvenement gestionnaireEvenement;
-
-
     /**********************Constantes ************/
     private final double TPS = 0.05;
     private final double TVQ = 0.095;
-    private final String evenementAjoutPlatChoisi = "ajout-platChoisi";
+    private final String evenementAjoutPlatChoisi = GestionnaireEvenement.evenementAjoutPlatChoisi;
 
     /**
      * @param client le client de la facture
@@ -135,8 +131,6 @@ public class Facture implements IIterable<PlatChoisi> {
         date = new Date();
         etat = new FactureOuverte(this);
         this.description = description;
-        this.gestionnaireEvenement = new GestionnaireEvenement(evenementAjoutPlatChoisi);
-        this.inventaire = Inventaire.getInstance(Optional.empty());
     }
 
     /**
@@ -147,24 +141,14 @@ public class Facture implements IIterable<PlatChoisi> {
         this.etat.ajoutePlat(p);
     }
 
-    public void ajoutePlatChoisi(PlatChoisi p) throws IngredientException, PlatException, FactureException {
-        ArrayList<IngredientInventaire> ingredientsNecessaire = new ArrayList<IngredientInventaire>();
-
-        // Mettre la bonne quantite
-        for (IngredientInventaire ingInventaire : p.getPlat().getIngredients()) {
-            ingredientsNecessaire.add(new IngredientInventaire(ingInventaire.getIngredient(), ingInventaire.getQuantite() * p.getQuantite()));
-        }
-
-        try {
-            inventaire.verifierEtMettreAJourInventaireIngredient(ingredientsNecessaire);
-        }
-        catch(IngredientException exception)
-        {
-            p.impossibleServir();
-            return;
-        }
+    /**
+     * Ajoute un plat choisi à la facture
+     *
+     * @param p le plat choisi
+     *
+     */
+    public void ajoutePlatChoisi(PlatChoisi p)  {
         this.platchoisi.add(p);
-        gestionnaireEvenement.notifier(evenementAjoutPlatChoisi, "Veuillez procéder à la préparation du plat suivant : " + p.toString());
     }
 
     /**
@@ -194,7 +178,7 @@ public class Facture implements IIterable<PlatChoisi> {
      * @param chef
      */
     public void associerChef(Chef chef) {
-        gestionnaireEvenement.abonner(evenementAjoutPlatChoisi, chef);
+        GestionnaireEvenement.getInstance(evenementAjoutPlatChoisi).abonner(evenementAjoutPlatChoisi, chef);
     }
 
     /**
@@ -203,7 +187,7 @@ public class Facture implements IIterable<PlatChoisi> {
      * @param chef
      */
     public void dissocierChef(Chef chef) {
-        gestionnaireEvenement.desabonner(evenementAjoutPlatChoisi, chef);
+        GestionnaireEvenement.getInstance(evenementAjoutPlatChoisi).desabonner(evenementAjoutPlatChoisi, chef);
     }
 
     @Override
