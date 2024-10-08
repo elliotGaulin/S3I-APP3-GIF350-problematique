@@ -6,6 +6,7 @@ package ingredients;
  */
 public class Laitier extends Ingredient{
 
+
     static {
         FabriqueIngredient.getInstance().enregistrerIngredient(TypeIngredient.LAITIER, new Laitier());
     }
