@@ -47,7 +47,7 @@ public class FactureController {
             facture.associerClient(c);
         }
 
-        public void ajouterPlatMenu(int pos, int quant) throws MenuException, FactureException {
+        public void ajouterPlatMenu(int pos, int quant) throws MenuException, FactureException, IngredientException {
             PlatAuMenu pm = Menu.getInstance().creerIterateur().position(pos);
             PlatChoisi p = new PlatChoisi(pm, quant);
             facture.ajoutePlat(p);

@@ -291,7 +291,7 @@ public class TestMenuFact02 {
         System.out.println(fc1);
     }
 
-    private void test8_AjouterPlatsFacture(FactureController fc1, int pos) throws MenuException, FactureException {
+    private void test8_AjouterPlatsFacture(FactureController fc1, int pos) throws MenuException, FactureException, IngredientException {
         System.out.println("===test8_AjouterPlatsFacture");
         try {
             fc1.ajouterPlatMenu(pos, 5);
