@@ -1,5 +1,6 @@
 package menufact;
 
+import Iterateur.IIterateur;
 import ingredients.Ingredient;
 import ingredients.IngredientInventaire;
 import menufact.facture.Facture;
@@ -40,12 +41,13 @@ public class TestMenuFact01 {
             System.out.println(menu);
 
             System.out.println("===menufact.Menu position 1, plat à la position 0");
-            menu.position(0);
-            System.out.println(menu.platCourant());
+            IIterateur<PlatAuMenu> it = menu.creerIterateur();
+            it.position(0);
+            System.out.println(it.courant());
 
             System.out.println("===menufact.Menu position 1, plat à la position suivante 1");
-            menu.positionSuivante();
-            System.out.println(menu.platCourant());
+            it.positionSuivante();
+            System.out.println(it.courant());
 
             System.out.println("== Plat choisi");
             PlatChoisi pch1 = new PlatChoisi(p1, 5);
