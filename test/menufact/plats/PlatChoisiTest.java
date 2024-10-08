@@ -58,6 +58,12 @@ class PlatChoisiTest {
     }
 
     @Test
+    void commandee() throws PlatException {
+        platChoisi.commandee();
+        assertTrue(platChoisi.getEtat() instanceof PlatCommandee);
+    }
+
+    @Test
     void preparee() throws PlatException {
         platChoisi.preparee();
         assertTrue(platChoisi.getEtat() instanceof PlatEnPreparation);
