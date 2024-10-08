@@ -3,7 +3,6 @@ package menufact;
 import Iterateur.IIterable;
 import Iterateur.IIterateur;
 import menufact.exceptions.IterateurException;
-import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;
 
 import java.util.ArrayList;
@@ -91,7 +90,7 @@ public class Menu implements IIterable<PlatAuMenu> {
          * @return Vrai si on peut aller à un plat précédent, faux sinon
          */
         @Override
-        public boolean aPrecedant() {
+        public boolean aPrecedent() {
             return courant > 0;
         }
 
@@ -102,7 +101,7 @@ public class Menu implements IIterable<PlatAuMenu> {
          */
         @Override
         public PlatAuMenu positionPrecedente() throws IterateurException {
-            if(!aPrecedant()) {
+            if(!aPrecedent()) {
                 throw new IterateurException("On depasse la limite inferieure de l'iterable.");
             }
 

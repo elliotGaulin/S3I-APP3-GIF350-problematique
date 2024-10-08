@@ -10,7 +10,6 @@ import menufact.Client;
 import menufact.GestionnaireEvenement;
 import menufact.exceptions.IterateurException;
 import menufact.facture.exceptions.FactureException;
-import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.exceptions.PlatException;
 
@@ -208,6 +207,10 @@ public class Facture implements IIterable<PlatChoisi> {
 
     @Override
     public IIterateur<PlatChoisi> creerIterateur() throws IterateurException {
+        if (platchoisi.size() == 0) {
+            throw new IterateurException("L'iterable est vide.");
+        }
+
         return new IterateurFacture();
     }
 
@@ -220,13 +223,13 @@ public class Facture implements IIterable<PlatChoisi> {
         }
 
         @Override
-        public boolean aPrecedant() {
+        public boolean aPrecedent() {
             return courant > 0;
         }
 
         @Override
         public PlatChoisi positionPrecedente() throws IterateurException {
-            if(!aPrecedant()) {
+            if(!aPrecedent()) {
                 throw new IterateurException("On depasse la limite inferieure de l'iterable.");
             }
 

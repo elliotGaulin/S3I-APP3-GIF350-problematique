@@ -9,7 +9,7 @@ public class FactureFermee extends FactureEtat {
     }
 
     public void payer() {
-        this.getFacture().setEtat(new FactureFermee(this.getFacture()));
+        this.getFacture().setEtat(new FacturePayee(this.getFacture()));
     }
 
     public void fermer() {
