@@ -1,51 +1,26 @@
 package menufact;
 
+import Iterateur.IIterable;
+import Iterateur.IIterateur;
+import menufact.exceptions.IterateurException;
 import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;
 
 import java.util.ArrayList;
 
-public class Menu {
+public class Menu implements IIterable<PlatAuMenu> {
     private static Menu instance;
 
     private String description;
-    private int courant;
     private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
 
     private Menu(String description) {
         this.description = description;
     }
 
-    void ajoute (PlatAuMenu p)
+    public void ajoute(PlatAuMenu p)
     {
         plat.add(p);
-    }
-
-    public void position(int i) throws MenuException {
-        if (i >= plat.size() || i < 0) {
-            throw new MenuException("On depasse le nombre minimal ou maximal de plats.");
-        }
-        courant = i;
-    }
-
-    public PlatAuMenu platCourant()
-    {
-        return plat.get(courant);
-    }
-
-    public void positionSuivante() throws MenuException
-    {
-        if (courant+1 >= plat.size())
-            throw new MenuException("On depasse le nombre maximale de plats.");
-        else
-            courant++;
-    }
-
-    public void positionPrecedente() throws MenuException {
-        if (courant - 1 < 0)
-            throw new MenuException("On depasse le nombre minimale de plats");
-        else
-            courant--;
     }
 
     /**
@@ -81,8 +56,76 @@ public class Menu {
     public String toString() {
         return "menufact.Menu{" +
                 "description='" + description + '\'' +
-                ", courant=" + courant +
                 ", plat=" + "\n" + plat +
                 '}';
+    }
+
+    @Override
+    public IIterateur<PlatAuMenu> creerIterateur() throws IterateurException {
+        if (plat.isEmpty()) {
+            throw new IterateurException("Le menu est vide.");
+        }
+
+        return new IterateurMenu();
+    }
+
+    private class IterateurMenu implements IIterateur<PlatAuMenu> {
+        private int courant = 0;
+
+        @Override
+        public boolean aSuivant() {
+            return courant < plat.size() - 1;
+        }
+
+        @Override
+        public boolean aPrecedant() {
+            return courant > 0;
+        }
+
+        @Override
+        public PlatAuMenu positionPrecedente() throws IterateurException {
+            if(!aPrecedant()) {
+                throw new IterateurException("On depasse la limite inferieure de l'iterable.");
+            }
+
+            courant--;
+            return courant();
+        }
+
+        @Override
+        public PlatAuMenu positionSuivante() throws IterateurException {
+            if (!aSuivant()) {
+                throw new IterateurException("On depasse la limite superieure de l'iterable.");
+            }
+
+            courant++;
+            return courant();
+        }
+
+        @Override
+        public PlatAuMenu premier() {
+            courant = 0;
+            return courant();
+        }
+
+        @Override
+        public PlatAuMenu dernier() {
+            courant = plat.size() - 1;
+            return courant();
+        }
+
+        @Override
+        public PlatAuMenu position(int i) throws IterateurException {
+            if (i >= plat.size() || i < 0) {
+                throw new IterateurException("On depasse les limites du l'iterable.");
+            }
+            courant = i;
+            return courant();
+        }
+
+        @Override
+        public PlatAuMenu courant() {
+            return plat.get(courant);
+        }
     }
 }

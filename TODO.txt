@@ -1,12 +1,12 @@
 Design pattern à implémenter obligatoirement :
 OK- Singleton : Classe menu
-  - Factory : Création de plats?
-  - Observer : Notifier au "Chef", "À chaque fois qu’un Plat choisi est ajouté à la Facture, il faut notifier au Chef qu’il faut
+OK- Factory : Création de plats?
+OK- Observer : Notifier au "Chef", "À chaque fois qu’un Plat choisi est ajouté à la Facture, il faut notifier au Chef qu’il faut
 procéder à la préparation du plat."
 OK- State : Facture et FactureEtat
 	Ajuster les méthodes payer(), fermer(), ouvrir() et ajoutePlat() pour utiliser les nouveaux states. À voir pour retirer plat
-  - MVC : Facture::genererFacture() devrait utiliser une vue/controlleur
+OK- MVC : Facture::genererFacture() devrait utiliser une vue/controlleur
 
 Possibles designs optionnels (choisir 2) :
   - Iterator (positions dans le menu)
-
+  - 

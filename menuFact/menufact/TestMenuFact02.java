@@ -1,10 +1,12 @@
 package menufact;
 
+import Iterateur.IIterateur;
 import ingredients.FabriqueIngredient;
 import ingredients.Ingredient;
 import ingredients.IngredientInventaire;
 import ingredients.TypeIngredient;
 import ingredients.exceptions.IngredientException;
+import menufact.exceptions.IterateurException;
 import inventaire.Inventaire;
 import menufact.facture.FactureController;
 import menufact.facture.FactureView;
@@ -79,7 +81,7 @@ public class TestMenuFact02 {
 
 
         Menu m1 = Menu.getInstance("menufact.Menu 1");
-        Menu m2 = Menu.getInstance("menufact.Menu 2");
+        Menu m2 = Menu.getInstance("menufact.Menu 2"); //Devrait retourner le même menu que m1
 
         FactureController fc1 = new FactureController(new Facture("Ma facture"), new FactureView());
 
@@ -118,7 +120,7 @@ public class TestMenuFact02 {
         t.test8_AjouterClientFacture(fc1, c1);
 
         try {
-            t.test8_AjouterPlatsFacture(fc1, m1, 1);
+            t.test8_AjouterPlatsFacture(fc1, 1);
         } catch (FactureException fe) {
             System.out.println(fe.getMessage());
         } catch (MenuException me) {
@@ -132,7 +134,7 @@ public class TestMenuFact02 {
         }
 
         try {
-            t.test8_AjouterPlatsFacture(fc1, m1, 1);
+            t.test8_AjouterPlatsFacture(fc1, 1);
         } catch (FactureException fe) {
             System.out.println(fe.getMessage());
         } catch (MenuException me) {
@@ -219,25 +221,26 @@ public class TestMenuFact02 {
         System.out.println("=== test5_DeplacementMenuAvancer");
 
         System.out.println("===Selectionner un plat du menu 0");
-        m1.position(0);
+        IIterateur<PlatAuMenu> it = m1.creerIterateur();
+        it.position(0);
 
         System.out.println("=== Afficher le plat courant");
-        System.out.println(m1.platCourant());
+        System.out.println(it.courant());
         try {
 
             System.out.println("=== Avancer le plat courant");
             System.out.println("1.");
-            m1.positionSuivante();
+            it.positionSuivante();
             System.out.println("2.");
-            m1.positionSuivante();
+            it.positionSuivante();
             System.out.println("3.");
-            m1.positionSuivante();
+            it.positionSuivante();
             System.out.println("4.");
-            m1.positionSuivante();
+            it.positionSuivante();
             System.out.println("5.");
-            m1.positionSuivante();
-        } catch (MenuException me) {
-            throw me;
+            it.positionSuivante();
+        } catch (IterateurException ie) {
+            throw ie;
         }
     }
 
@@ -246,32 +249,33 @@ public class TestMenuFact02 {
         System.out.println("===test6_DeplacementMenuReculer");
 
         System.out.println("===Selectionner un plat du menu 3");
-        m1.position(3);
+        IIterateur<PlatAuMenu> it = m1.creerIterateur();
+        it.position(3);
 
         System.out.println("=== Afficher le plat courant");
-        System.out.println(m1.platCourant());
+        System.out.println(it.courant());
         try {
 
             System.out.println("=== Reculer le plat courant");
             System.out.println("2.");
-            m1.positionPrecedente();
+            it.positionPrecedente();
             System.out.println("1.");
-            m1.positionPrecedente();
+            it.positionPrecedente();
             System.out.println("0.");
-            m1.positionPrecedente();
+            it.positionPrecedente();
             System.out.println("-1.");
-            m1.positionPrecedente();
+            it.positionPrecedente(); //Devrait lancer une exception
             System.out.println("-2.");
-            m1.positionPrecedente();
-        } catch (MenuException me) {
-            throw me;
+            it.positionPrecedente(); //Ne devrait pas être exécuté
+        } catch (IterateurException ie) {
+            System.out.println(ie.getMessage());
         }
     }
 
     private void test7_CreerFacture(FactureController fc1, Menu m1) throws FactureException, IngredientException {
         System.out.println("===test7_CreerFacture");
 
-        PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(), 5);
+        PlatChoisi platChoisi = new PlatChoisi(m1.creerIterateur().courant(), 5);
         try {
             fc1.ajoutePlat(platChoisi);
         } catch (FactureException fe) {
@@ -287,7 +291,7 @@ public class TestMenuFact02 {
         System.out.println(fc1);
     }
 
-    private void test8_AjouterPlatsFacture(FactureController fc1, Menu m1, int pos) throws MenuException, FactureException {
+    private void test8_AjouterPlatsFacture(FactureController fc1, int pos) throws MenuException, FactureException {
         System.out.println("===test8_AjouterPlatsFacture");
         try {
             fc1.ajouterPlatMenu(pos, 5);

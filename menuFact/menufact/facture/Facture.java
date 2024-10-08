@@ -2,11 +2,15 @@ package menufact.facture;
 
 import ingredients.IngredientInventaire;
 import ingredients.exceptions.IngredientException;
+import Iterateur.IIterable;
+import Iterateur.IIterateur;
 import inventaire.Inventaire;
 import menufact.Chef;
 import menufact.Client;
 import menufact.GestionnaireEvenement;
+import menufact.exceptions.IterateurException;
 import menufact.facture.exceptions.FactureException;
+import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ import java.util.Optional;
  * @author Domingo Palao Munoz
  * @version 1.0
  */
-public class Facture {
+public class Facture implements IIterable<PlatChoisi> {
     private Date date;
     private String description;
     private FactureEtat etat;
@@ -129,7 +133,6 @@ public class Facture {
     public Facture(String description) {
         date = new Date();
         etat = new FactureOuverte(this);
-        courant = -1;
         this.description = description;
         this.gestionnaireEvenement = new GestionnaireEvenement(evenementAjoutPlatChoisi);
         this.inventaire = Inventaire.getInstance(Optional.empty());
@@ -166,7 +169,6 @@ public class Facture {
                 ", description='" + description + '\'' +
                 ", etat=" + etat +
                 ", platchoisi=" + platchoisi +
-                ", courant=" + courant +
                 ", client=" + client +
                 ", TPS=" + TPS +
                 ", TVQ=" + TVQ +
@@ -194,5 +196,70 @@ public class Facture {
      */
     public void dissocierChef(Chef chef) {
         gestionnaireEvenement.desabonner(evenementAjoutPlatChoisi, chef);
+    }
+
+    @Override
+    public IIterateur<PlatChoisi> creerIterateur() throws IterateurException {
+        return new IterateurFacture();
+    }
+
+    private class IterateurFacture implements IIterateur<PlatChoisi> {
+        private int courant = 0;
+
+        @Override
+        public boolean aSuivant() {
+            return courant < platchoisi.size() - 1;
+        }
+
+        @Override
+        public boolean aPrecedant() {
+            return courant > 0;
+        }
+
+        @Override
+        public PlatChoisi positionPrecedente() throws IterateurException {
+            if(!aPrecedant()) {
+                throw new IterateurException("On depasse la limite inferieure de l'iterable.");
+            }
+
+            courant--;
+            return courant();
+        }
+
+        @Override
+        public PlatChoisi positionSuivante() throws IterateurException {
+            if (!aSuivant()) {
+                throw new IterateurException("On depasse la limite superieure de l'iterable.");
+            }
+
+            courant++;
+            return courant();
+        }
+
+        @Override
+        public PlatChoisi premier() {
+            courant = 0;
+            return courant();
+        }
+
+        @Override
+        public PlatChoisi dernier() {
+            courant = platchoisi.size() - 1;
+            return courant();
+        }
+
+        @Override
+        public PlatChoisi position(int i) throws IterateurException {
+            if (i >= platchoisi.size() || i < 0) {
+                throw new IterateurException("On depasse les limites du l'iterable.");
+            }
+            courant = i;
+            return courant();
+        }
+
+        @Override
+        public PlatChoisi courant() {
+            return platchoisi.get(courant);
+        }
     }
 }
