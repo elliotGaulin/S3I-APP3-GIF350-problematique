@@ -8,6 +8,7 @@ import menufact.exceptions.MenuException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
+import menufact.plats.exceptions.PlatException;
 
 public class FactureController {
         private Facture facture;
@@ -39,7 +40,7 @@ public class FactureController {
             return factureView.render(facture);
         }
 
-        public void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException {
+        public void ajoutePlat(PlatChoisi p) throws FactureException, IngredientException, PlatException {
             facture.ajoutePlat(p);
         }
 
@@ -47,7 +48,7 @@ public class FactureController {
             facture.associerClient(c);
         }
 
-        public void ajouterPlatMenu(int pos, int quant) throws MenuException, FactureException, IngredientException {
+        public void ajouterPlatMenu(int pos, int quant) throws MenuException, FactureException, IngredientException, PlatException {
             PlatAuMenu pm = Menu.getInstance().creerIterateur().position(pos);
             PlatChoisi p = new PlatChoisi(pm, quant);
             facture.ajoutePlat(p);

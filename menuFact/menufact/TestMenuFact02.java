@@ -16,6 +16,7 @@ import menufact.facture.Facture;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
+import menufact.plats.exceptions.PlatException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -112,8 +113,9 @@ public class TestMenuFact02 {
 
         try {
             t.test7_CreerFacture(fc1, m1);
-        } catch (FactureException e) {
+        } catch (FactureException | PlatException e) {
             System.out.println(e.getMessage());
+
         }
 
 
@@ -121,8 +123,8 @@ public class TestMenuFact02 {
 
         try {
             t.test8_AjouterPlatsFacture(fc1, 1);
-        } catch (FactureException fe) {
-            System.out.println(fe.getMessage());
+        } catch (FactureException | PlatException e) {
+            System.out.println(e.getMessage());
         } catch (MenuException me) {
             System.out.println(me);
         }
@@ -135,8 +137,8 @@ public class TestMenuFact02 {
 
         try {
             t.test8_AjouterPlatsFacture(fc1, 1);
-        } catch (FactureException fe) {
-            System.out.println(fe.getMessage());
+        } catch (FactureException | PlatException e) {
+            System.out.println(e.getMessage());
         } catch (MenuException me) {
             System.out.println(me);
         }
@@ -272,7 +274,7 @@ public class TestMenuFact02 {
         }
     }
 
-    private void test7_CreerFacture(FactureController fc1, Menu m1) throws FactureException, IngredientException {
+    private void test7_CreerFacture(FactureController fc1, Menu m1) throws FactureException, IngredientException, PlatException {
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.creerIterateur().courant(), 5);
@@ -291,7 +293,7 @@ public class TestMenuFact02 {
         System.out.println(fc1);
     }
 
-    private void test8_AjouterPlatsFacture(FactureController fc1, int pos) throws MenuException, FactureException, IngredientException {
+    private void test8_AjouterPlatsFacture(FactureController fc1, int pos) throws MenuException, FactureException, IngredientException, PlatException {
         System.out.println("===test8_AjouterPlatsFacture");
         try {
             fc1.ajouterPlatMenu(pos, 5);
