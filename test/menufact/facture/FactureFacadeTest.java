@@ -1,11 +1,11 @@
 package menufact.facture;
 
-import ingredients.FabriqueIngredient;
-import ingredients.Ingredient;
-import ingredients.IngredientInventaire;
-import ingredients.TypeIngredient;
-import ingredients.exceptions.IngredientException;
-import inventaire.Inventaire;
+import menufact.ingredients.FabriqueIngredient;
+import menufact.ingredients.Ingredient;
+import menufact.ingredients.IngredientInventaire;
+import menufact.ingredients.TypeIngredient;
+import menufact.ingredients.exceptions.IngredientException;
+import menufact.inventaire.Inventaire;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.facture.exceptions.FactureException;
@@ -33,11 +33,11 @@ class FactureFacadeTest {
     void setUp() throws IngredientException, PlatException {
 
         try {
-            Class.forName("ingredients.Legume");
-            Class.forName("ingredients.Viande");
-            Class.forName("ingredients.Fruit");
-            Class.forName("ingredients.Laitier");
-            Class.forName("ingredients.Epice");
+            Class.forName("menufact.ingredients.Legume");
+            Class.forName("menufact.ingredients.Viande");
+            Class.forName("menufact.ingredients.Fruit");
+            Class.forName("menufact.ingredients.Laitier");
+            Class.forName("menufact.ingredients.Epice");
 
         } catch (ClassNotFoundException any) {
             any.printStackTrace();

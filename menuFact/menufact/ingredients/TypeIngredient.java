@@ -1,4 +1,4 @@
-package ingredients;
+package menufact.ingredients;
 
 public enum TypeIngredient {
     FRUIT, LEGUME, VIANDE, LAITIER, EPICE

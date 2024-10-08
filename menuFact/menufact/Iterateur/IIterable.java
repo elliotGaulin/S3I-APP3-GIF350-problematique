@@ -1,6 +1,6 @@
-package Iterateur;
+package menufact.Iterateur;
 
-import menufact.exceptions.IterateurException;
+import menufact.Iterateur.exceptions.IterateurException;
 
 public interface IIterable<T> {
     public IIterateur<T> creerIterateur()  throws IterateurException;

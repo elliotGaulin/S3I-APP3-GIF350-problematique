@@ -1,4 +1,4 @@
-package menufact.exceptions;
+package menufact.Iterateur.exceptions;
 
 public class IterateurException extends RuntimeException {
 

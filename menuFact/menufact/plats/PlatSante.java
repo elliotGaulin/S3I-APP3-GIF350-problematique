@@ -1,7 +1,6 @@
 package menufact.plats;
 
-import ingredients.IngredientInventaire;
-import menufact.plats.PlatAuMenu;
+import menufact.ingredients.IngredientInventaire;
 
 import java.util.ArrayList;
 

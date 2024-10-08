@@ -1,12 +1,12 @@
 package menufact.facture;
 
-import ingredients.exceptions.IngredientException;
-import Iterateur.IIterable;
-import Iterateur.IIterateur;
-import observateur.Chef;
+import menufact.ingredients.exceptions.IngredientException;
+import menufact.Iterateur.IIterable;
+import menufact.Iterateur.IIterateur;
+import menufact.observateur.Chef;
 import menufact.Client;
-import observateur.GestionnaireEvenement;
-import menufact.exceptions.IterateurException;
+import menufact.observateur.GestionnaireEvenement;
+import menufact.Iterateur.exceptions.IterateurException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatChoisi;
 import menufact.plats.exceptions.PlatException;

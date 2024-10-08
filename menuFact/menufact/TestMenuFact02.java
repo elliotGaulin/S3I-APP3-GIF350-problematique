@@ -1,25 +1,29 @@
 package menufact;
 
-import Iterateur.IIterateur;
-import ingredients.FabriqueIngredient;
-import ingredients.Ingredient;
-import ingredients.IngredientInventaire;
-import ingredients.TypeIngredient;
-import ingredients.exceptions.IngredientException;
-import menufact.exceptions.IterateurException;
-import inventaire.Inventaire;
+import menufact.Iterateur.IIterateur;
+import menufact.ingredients.FabriqueIngredient;
+import menufact.ingredients.Ingredient;
+import menufact.ingredients.IngredientInventaire;
+import menufact.ingredients.TypeIngredient;
+import menufact.ingredients.exceptions.IngredientException;
+import menufact.Iterateur.exceptions.IterateurException;
+import menufact.inventaire.Inventaire;
 import menufact.facture.FactureController;
 import menufact.facture.FactureFacade;
 import menufact.facture.FactureView;
 import menufact.facture.exceptions.FactureException;
-import menufact.exceptions.MenuException;
+import menufact.menu.exceptions.MenuException;
 import menufact.facture.Facture;
+import menufact.menu.Menu;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 import menufact.plats.exceptions.PlatException;
-import observateur.Chef;
+import menufact.observateur.Chef;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,11 +33,11 @@ public class TestMenuFact02 {
 
     static {
         try {
-            Class.forName("ingredients.Legume");
-            Class.forName("ingredients.Viande");
-            Class.forName("ingredients.Fruit");
-            Class.forName("ingredients.Laitier");
-            Class.forName("ingredients.Epice");
+            Class.forName("menufact.ingredients.Legume");
+            Class.forName("menufact.ingredients.Viande");
+            Class.forName("menufact.ingredients.Fruit");
+            Class.forName("menufact.ingredients.Laitier");
+            Class.forName("menufact.ingredients.Epice");
 
         } catch (ClassNotFoundException any) {
             any.printStackTrace();
@@ -83,8 +87,8 @@ public class TestMenuFact02 {
         PlatSante ps5 = new PlatSante(14, "PlatSante4", 50, ingredients, 11, 11, 11);
 
 
-        Menu m1 = Menu.getInstance("menufact.Menu 1");
-        Menu m2 = Menu.getInstance("menufact.Menu 2"); //Devrait retourner le même menu que m1
+        Menu m1 = Menu.getInstance("menufact.menu.Menu 1");
+        Menu m2 = Menu.getInstance("menufact.menu.Menu 2"); //Devrait retourner le même menu que m1
 
         FactureController fc1 = new FactureController(new Facture("Ma facture"), new FactureView());
 
@@ -153,7 +157,7 @@ public class TestMenuFact02 {
 
         System.out.println("FIN DE TOUS LES TESTS...");
 
-        System.out.println(fc1.genererFacture());
+        ecrireAuFichier(fc1.genererFacture());
     }
 
     private void test1_AffichePlatsAuMenu(boolean trace, PlatAuMenu p1, PlatAuMenu p2,
@@ -167,7 +171,6 @@ public class TestMenuFact02 {
             System.out.println(p5);
         }
     }
-
 
     private void test2_AffichePlatsSante(boolean trace, PlatSante ps1, PlatSante ps2,
                                          PlatSante ps3, PlatSante ps4, PlatSante ps5) {
@@ -317,5 +320,18 @@ public class TestMenuFact02 {
         fc1.payer();
         System.out.println("Apres avoir paye la facture");
         System.out.println(fc1);
+    }
+
+    public static void ecrireAuFichier(String texte)
+    {
+        String fileName = "out.txt";
+
+        // Écriture dans le fichier
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            writer.write(texte);
+            System.out.println("Écriture dans le fichier: " + fileName);
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'écriture dans le fichier: " + e.getMessage());
+        }
     }
 }

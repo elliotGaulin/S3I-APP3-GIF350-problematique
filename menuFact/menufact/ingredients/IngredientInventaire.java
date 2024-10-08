@@ -1,6 +1,6 @@
-package ingredients;
+package menufact.ingredients;
 
-import ingredients.exceptions.IngredientException;
+import menufact.ingredients.exceptions.IngredientException;
 
 /**
  * Représente l'inventaire pour un Ingredient

@@ -1,6 +1,10 @@
 package ingredients;
 
-import ingredients.exceptions.IngredientException;
+import menufact.ingredients.FabriqueIngredient;
+import menufact.ingredients.Ingredient;
+import menufact.ingredients.IngredientInventaire;
+import menufact.ingredients.TypeIngredient;
+import menufact.ingredients.exceptions.IngredientException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +22,11 @@ class IngredientInventaireTest {
         fabriqueIngredient = FabriqueIngredient.getInstance();
 
         try {
-            Class.forName("ingredients.Legume");
-            Class.forName("ingredients.Viande");
-            Class.forName("ingredients.Fruit");
-            Class.forName("ingredients.Laitier");
-            Class.forName("ingredients.Epice");
+            Class.forName("menufact.ingredients.Legume");
+            Class.forName("menufact.ingredients.Viande");
+            Class.forName("menufact.ingredients.Fruit");
+            Class.forName("menufact.ingredients.Laitier");
+            Class.forName("menufact.ingredients.Epice");
 
         } catch (ClassNotFoundException any) {
             any.printStackTrace();
