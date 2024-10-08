@@ -13,10 +13,18 @@ public class Menu implements IIterable<PlatAuMenu> {
     private String description;
     private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
 
+    /**
+     * Constructeur privé du menu pour le singleton
+     * @param description La description du menu
+     */
     private Menu(String description) {
         this.description = description;
     }
 
+    /**
+     * Ajoute un plat au menu
+     * @param p Le plat à ajouter
+     */
     public void ajoute(PlatAuMenu p)
     {
         plat.add(p);

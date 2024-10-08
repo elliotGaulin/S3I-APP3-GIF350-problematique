@@ -14,10 +14,19 @@ public class Inventaire {
     private Map<String, Integer> ingredientInventaires;
     private static Inventaire instance;
 
+    /**
+     * Constructeur de l'inventaire
+     * @param ingredientInventaires les ingrédients de l'inventaire
+     */
     private Inventaire(Optional<Map<String, Integer>> ingredientInventaires) {
         this.ingredientInventaires = ingredientInventaires.orElse(new HashMap<>());
     }
 
+    /**
+     * Retourner l'instance de l'inventaire
+     * @param ingredientInventaires les ingrédients de l'inventaire s'il n'est pas déjà initialisé
+     * @return l'instance de l'inventaire
+     */
     public static Inventaire getInstance(Optional<Map<String, Integer>> ingredientInventaires) {
         if (instance == null) {
             instance = new Inventaire(ingredientInventaires);

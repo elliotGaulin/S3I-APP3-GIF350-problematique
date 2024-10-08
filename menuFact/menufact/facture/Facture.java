@@ -97,18 +97,30 @@ public class Facture implements IIterable<PlatChoisi> {
         this.etat.ouvrir();
     }
 
+    /**
+     * @return la description de la facture
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * @return la date de la facture
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     * @return le client de la facture
+     */
     public Client getClient() {
         return this.client;
     }
 
+    /**
+     * @return la liste des plats choisis
+     */
     public ArrayList<PlatChoisi> getPlatchoisi() {
         return platchoisi;
     }
@@ -163,6 +175,10 @@ public class Facture implements IIterable<PlatChoisi> {
                 '}';
     }
 
+    /**
+     *  Setter de l'etat
+     * @param etat l'état de la facture
+     */
     public void setEtat(FactureEtat etat) {
         this.etat = etat;
     }
@@ -186,6 +202,11 @@ public class Facture implements IIterable<PlatChoisi> {
         GestionnaireEvenement.getInstance(evenementAjoutPlatChoisi).desabonner(evenementAjoutPlatChoisi, chef);
     }
 
+    /**
+     * Créer un iterateur pour la facture
+     * @return un iterateur pour la facture
+     * @throws IterateurException si la facture est vide
+     */
     @Override
     public IIterateur<PlatChoisi> creerIterateur() throws IterateurException {
         if (platchoisi.size() == 0) {
@@ -195,19 +216,35 @@ public class Facture implements IIterable<PlatChoisi> {
         return new IterateurFacture();
     }
 
+    /**
+     * Iterateur pour la facture
+     */
     private class IterateurFacture implements IIterateur<PlatChoisi> {
         private int courant = 0;
 
+        /**
+         * Vérifier s'il y a un élément suivant
+         * @return vrai s'il y a un élément suivant
+         */
         @Override
         public boolean aSuivant() {
             return courant < platchoisi.size() - 1;
         }
 
+        /**
+         * Vérifier s'il y a un élément précédent
+         * @return vrai s'il y a un élément précédent
+         */
         @Override
         public boolean aPrecedent() {
             return courant > 0;
         }
 
+        /**
+         * Positionner l'itérateur sur l'élément précédent
+         * @return l'élément précédent
+         * @throws IterateurException si on dépasse la limite inférieure de l'itérable
+         */
         @Override
         public PlatChoisi positionPrecedente() throws IterateurException {
             if(!aPrecedent()) {
@@ -218,6 +255,11 @@ public class Facture implements IIterable<PlatChoisi> {
             return courant();
         }
 
+        /**
+         * Positionner l'itérateur sur l'élément suivant
+         * @return l'élément suivant
+         * @throws IterateurException si on dépasse la limite supérieure de l'itérable
+         */
         @Override
         public PlatChoisi positionSuivante() throws IterateurException {
             if (!aSuivant()) {
@@ -228,18 +270,32 @@ public class Facture implements IIterable<PlatChoisi> {
             return courant();
         }
 
+        /**
+         * Positionner l'itérateur sur le premier élément
+         * @return le premier élément
+         */
         @Override
         public PlatChoisi premier() {
             courant = 0;
             return courant();
         }
 
+        /**
+         * Positionner l'itérateur sur le dernier élément
+         * @return le dernier élément
+         */
         @Override
         public PlatChoisi dernier() {
             courant = platchoisi.size() - 1;
             return courant();
         }
 
+        /**
+         * Positionner l'itérateur sur l'élément à la position i
+         * @param i la position
+         * @return l'élément à la position i
+         * @throws IterateurException si on dépasse les limites de l'itérable
+         */
         @Override
         public PlatChoisi position(int i) throws IterateurException {
             if (i >= platchoisi.size() || i < 0) {
@@ -249,6 +305,10 @@ public class Facture implements IIterable<PlatChoisi> {
             return courant();
         }
 
+        /**
+         * Retourner l'élément courant
+         * @return l'élément courant
+         */
         @Override
         public PlatChoisi courant() {
             return platchoisi.get(courant);

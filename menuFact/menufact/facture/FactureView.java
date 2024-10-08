@@ -10,6 +10,12 @@ import menufact.plats.PlatChoisi;
  * @date 2024-10-08
  */
 public class FactureView {
+
+    /**
+     * Methode render
+     * @param facture Facture à afficher
+     * @return
+     */
     public String render(Facture facture) {
         String lesPlats = "";
         String factureGenere = "";

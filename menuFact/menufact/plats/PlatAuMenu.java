@@ -34,7 +34,6 @@ public class PlatAuMenu {
     }
 
     /**
-     *
      * @return le code du plat
      */
     public int getCode() {
@@ -42,7 +41,6 @@ public class PlatAuMenu {
     }
 
     /**
-     *
      * @param code le code du plat
      */
     public void setCode(int code) {
@@ -50,7 +48,6 @@ public class PlatAuMenu {
     }
 
     /**
-     *
      * @return la description du plat
      */
     public String getDescription() {
@@ -58,7 +55,6 @@ public class PlatAuMenu {
     }
 
     /**
-     *
      * @param description la description du plat
      */
     public void setDescription(String description) {
@@ -66,7 +62,6 @@ public class PlatAuMenu {
     }
 
     /**
-     *
      * @return le prix du plat
      */
     public double getPrix() {
@@ -74,7 +69,6 @@ public class PlatAuMenu {
     }
 
     /**
-     *
      * @param prix le prix du plat
      */
     public void setPrix(double prix) {
@@ -82,14 +76,13 @@ public class PlatAuMenu {
     }
 
     /**
-     *
      * @return les ingrédients du plat
      */
     public ArrayList<IngredientInventaire> getIngredients() {
         return ingredients;
     }
+
     /**
-     *
      * @param ingredients les ingrédients du plat
      */
     public void setIngredients(ArrayList<IngredientInventaire> ingredients) {

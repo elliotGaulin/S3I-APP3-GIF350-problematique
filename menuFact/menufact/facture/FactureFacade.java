@@ -20,7 +20,9 @@ public class FactureFacade {
     private final Inventaire inventaire;
     private final GestionnaireEvenement gestionnaireEvenement;
 
-
+    /**
+     * Constructeur
+     */
     public FactureFacade() {
         this.inventaire = Inventaire.getInstance(Optional.empty());
         this.gestionnaireEvenement = GestionnaireEvenement.getInstance(
