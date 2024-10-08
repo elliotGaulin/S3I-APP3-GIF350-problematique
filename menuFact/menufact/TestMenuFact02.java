@@ -89,7 +89,7 @@ public class TestMenuFact02 {
 
         Client c1 = new Client(1, "Mr Client", "1234567890");
 
-        Chef chef = new Chef();
+        Chef chef = new Chef("Mr Chef");
 
         fc1.associerChef(chef);
 

@@ -18,11 +18,22 @@ public class GestionnaireEvenement {
         if (instance == null) {
             instance = new GestionnaireEvenement(typeEvenements);
         }
+        if (typeEvenements.length > 0) {
+            instance.ajoutListeEvenements(typeEvenements);
+        }
         return instance;
     }
-    public GestionnaireEvenement(String... typeEvenements) {
+    private GestionnaireEvenement(String... typeEvenements) {
         for (String type : typeEvenements) {
             evenements.put(type, new ArrayList<EcouteurEvenement>());
+        }
+    }
+
+    public void ajoutListeEvenements(String... typeEvenements) {
+        for (String type : typeEvenements) {
+            if (!evenements.containsKey(type))
+                evenements.put(type, new ArrayList<EcouteurEvenement>());
+
         }
     }
 

@@ -5,6 +5,10 @@ package menufact;
  */
 public class Chef implements EcouteurEvenement{
 
+    public Chef(String nom) {
+        this.nom = nom;
+    }
+
     private String nom;
     @Override
     public void mettreAJour(String typeEvenement, String donnees) {
