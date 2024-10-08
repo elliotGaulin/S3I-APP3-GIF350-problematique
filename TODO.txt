@@ -8,5 +8,5 @@ OK- State : Facture et FactureEtat
 OK- MVC : Facture::genererFacture() devrait utiliser une vue/controlleur
 
 Possibles designs optionnels (choisir 2) :
-  - Iterator (positions dans le menu)
+OK- Iterator (positions dans le menu)
   - 
