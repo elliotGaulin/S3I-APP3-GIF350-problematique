@@ -16,6 +16,7 @@ public class PlatTerminee extends PlatEtat {
 
     @Override
     public void preparee() throws PlatException {
+        getPlatChoisi().setEtat(new PlatEnPreparation(getPlatChoisi()));
     }
 
     @Override
