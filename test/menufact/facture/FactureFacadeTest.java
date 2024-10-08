@@ -6,7 +6,6 @@ import ingredients.IngredientInventaire;
 import ingredients.TypeIngredient;
 import ingredients.exceptions.IngredientException;
 import inventaire.Inventaire;
-import menufact.GestionnaireEvenement;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.facture.exceptions.FactureException;

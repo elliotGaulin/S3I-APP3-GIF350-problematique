@@ -1,4 +1,4 @@
-package menufact;
+package observateur;
 
 /**
  * Un Chef pour le système menuFact

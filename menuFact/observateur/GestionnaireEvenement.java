@@ -1,4 +1,4 @@
-package menufact;
+package observateur;
 
 import java.util.ArrayList;
 import java.util.HashMap;

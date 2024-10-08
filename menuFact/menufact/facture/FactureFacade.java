@@ -3,7 +3,7 @@ package menufact.facture;
 import ingredients.IngredientInventaire;
 import ingredients.exceptions.IngredientException;
 import inventaire.Inventaire;
-import menufact.GestionnaireEvenement;
+import observateur.GestionnaireEvenement;
 import menufact.plats.PlatChoisi;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.exceptions.PlatException;

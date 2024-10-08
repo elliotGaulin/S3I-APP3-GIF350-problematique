@@ -1,4 +1,4 @@
-package menufact;
+package observateur;
 
 /**
  * Interface pour définir les écouteurs d'évènements.

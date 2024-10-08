@@ -18,6 +18,7 @@ import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 import menufact.plats.exceptions.PlatException;
+import observateur.Chef;
 
 import java.util.ArrayList;
 import java.util.HashMap;

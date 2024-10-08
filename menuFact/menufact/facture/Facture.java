@@ -1,22 +1,18 @@
 package menufact.facture;
 
-import ingredients.IngredientInventaire;
 import ingredients.exceptions.IngredientException;
 import Iterateur.IIterable;
 import Iterateur.IIterateur;
-import inventaire.Inventaire;
-import menufact.Chef;
+import observateur.Chef;
 import menufact.Client;
-import menufact.GestionnaireEvenement;
+import observateur.GestionnaireEvenement;
 import menufact.exceptions.IterateurException;
 import menufact.facture.exceptions.FactureException;
-import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.exceptions.PlatException;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Optional;
 
 /**
  * Une facture du systeme Menufact
