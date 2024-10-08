@@ -97,7 +97,7 @@ public class FactureViewTest {
     }
 
     @Test
-    public void testRender() {
+    public void testRender() throws PlatException {
         Facture facture = new Facture("Ma facture");
         Client client = new Client(1, "Elliot", "1234567890");
         FactureView factureView = new FactureView();

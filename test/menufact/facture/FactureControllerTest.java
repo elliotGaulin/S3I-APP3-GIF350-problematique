@@ -150,7 +150,7 @@ public class FactureControllerTest {
     }
 
     @Test
-    public void testAjoutePlat() {
+    public void testAjoutePlat() throws PlatException {
         Facture facture = new Facture("Ma facture");
         FactureView factureView = new FactureView();
         FactureController factureController = new FactureController(facture, factureView);

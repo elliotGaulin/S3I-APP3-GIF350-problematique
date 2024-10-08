@@ -5,6 +5,7 @@ import ingredients.IngredientInventaire;
 import menufact.exceptions.IterateurException;
 import menufact.plats.PlatAuMenu;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -14,6 +15,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class MenuTest {
+    @BeforeAll
+    public static void setup() {
+        Field field = null;
+        try {
+            field = Menu.class.getDeclaredField("instance");
+            field.setAccessible(true);
+            field.set(null, null);
+        } catch (NoSuchFieldException | IllegalAccessException ignored) {
+        }
+    }
+
     @AfterEach
     public void tearDown() {
         Field field = null;

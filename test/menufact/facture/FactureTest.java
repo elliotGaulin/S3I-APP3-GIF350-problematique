@@ -299,7 +299,7 @@ public class FactureTest {
         try {
             facture.ajoutePlatChoisi(new PlatChoisi(plat1, 5));
             facture.ajoutePlatChoisi(new PlatChoisi(plat2, 10));
-        } catch (FactureException | IngredientException | PlatException ignored) {
+        } catch (PlatException ignored) {
         }
 
         assertEquals(2, facture.getPlatchoisi().size(), "La liste des plats choisis de la facture devrait contenir 2 éléments.");
@@ -315,7 +315,7 @@ public class FactureTest {
     }
 
     @Test
-    public void testCreerIterateur() {
+    public void testCreerIterateur() throws PlatException {
         Facture facture = new Facture("Ma facture");
         assertThrows(IterateurException.class, facture::creerIterateur, "L'itérateur ne devrait pas être créé sans plats.");
 
@@ -335,7 +335,7 @@ public class FactureTest {
     }
 
     @Test
-    public void testIterateurPrecedent() {
+    public void testIterateurPrecedent() throws PlatException {
         Facture facture = new Facture("Ma facture");
         Menu menu = Menu.getInstance();
         IIterateur<PlatAuMenu> itm = Menu.getInstance().creerIterateur();
@@ -359,7 +359,7 @@ public class FactureTest {
     }
 
     @Test
-    public void testIterateurSuivant() {
+    public void testIterateurSuivant() throws PlatException {
         Facture facture = new Facture("Ma facture");
         Menu menu = Menu.getInstance();
         IIterateur<PlatAuMenu> itm = Menu.getInstance().creerIterateur();
@@ -385,7 +385,7 @@ public class FactureTest {
     }
 
     @Test
-    public void testIteratorPremier() {
+    public void testIteratorPremier() throws PlatException {
         Facture facture = new Facture("Ma facture");
         Menu menu = Menu.getInstance();
         IIterateur<PlatAuMenu> itm = Menu.getInstance().creerIterateur();
@@ -406,7 +406,7 @@ public class FactureTest {
     }
 
     @Test
-    public void testIterateurDernier() {
+    public void testIterateurDernier() throws PlatException {
         Facture facture = new Facture("Ma facture");
         Menu menu = Menu.getInstance();
         IIterateur<PlatAuMenu> itm = Menu.getInstance().creerIterateur();
@@ -427,7 +427,7 @@ public class FactureTest {
     }
 
     @Test
-    public void testIterateurPosition() {
+    public void testIterateurPosition() throws PlatException {
         Facture facture = new Facture("Ma facture");
         Menu menu = Menu.getInstance();
         IIterateur<PlatAuMenu> itm = Menu.getInstance().creerIterateur();
@@ -451,7 +451,7 @@ public class FactureTest {
     }
 
     @Test
-    public void testIterateurCourant() {
+    public void testIterateurCourant() throws PlatException {
         Facture facture = new Facture("Ma facture");
         Menu menu = Menu.getInstance();
         IIterateur<PlatAuMenu> itm = Menu.getInstance().creerIterateur();

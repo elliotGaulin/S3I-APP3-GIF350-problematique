@@ -11,6 +11,7 @@ import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
+import menufact.plats.exceptions.PlatException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -129,7 +130,7 @@ public class FactureFermeeTest {
     }
 
     @Test
-    public void testAjoutePlat() {
+    public void testAjoutePlat() throws PlatException {
         Facture facture = new Facture("Ma facture");
         FactureFermee factureFermee = new FactureFermee(facture);
         facture.setEtat(factureFermee);
