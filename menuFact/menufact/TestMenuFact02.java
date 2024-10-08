@@ -119,7 +119,7 @@ public class TestMenuFact02 {
 
         try {
             t.test7_CreerFacture(fc1, m1);
-        } catch (FactureException | PlatException e) {
+        } catch (FactureException | PlatException | IngredientException e) {
             System.out.println(e.getMessage());
 
         }
@@ -287,8 +287,8 @@ public class TestMenuFact02 {
         FactureFacade factureFacade = new FactureFacade();
         try {
             factureFacade.ajoutePlatChoisi(fc1, platChoisi);
-        } catch (FactureException fe) {
-            throw fe;
+        } catch (FactureException | PlatException | IngredientException e) {
+            throw e;
         }
         System.out.println(fc1);
     }
